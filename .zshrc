@@ -116,3 +116,4 @@ SAVEHIST=10000
 alias bt1='cd ~/Documents/projects/benchtell/gen-1/code/app-gen-1'
 alias bt2='cd ~/Documents/projects/benchtell/gen-2'
 
+export PATH=$PATH:~/.emacs.d/bin

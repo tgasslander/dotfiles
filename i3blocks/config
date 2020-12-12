@@ -1,0 +1,16 @@
+[ip]
+command=hostname -i | awk '{ print " " $2 }'
+interval=once
+# color=#91E78B
+
+[cpu]
+command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12 "%"}'a
+interval=1
+
+[battery]
+command=/home/toga/.config/i3blocks/battery.sh
+interval=10
+
+[time]
+command=printf " " && date '+%Y-%m-%d %H:%M' 
+interval=5
