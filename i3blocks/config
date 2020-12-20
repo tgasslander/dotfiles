@@ -1,5 +1,5 @@
 [ip]
-command=hostname -i | awk '{ print " " $2 }'
+command=hostname -I | awk '{ print " " $1 }'
 interval=once
 # color=#91E78B
 

@@ -188,7 +188,7 @@ bar {
 }
 
 # toga - office setup
-exec xrandr --output DP-3 --auto --left-of HDMI-0 --auto 
+exec xrandr --output DP-3 --dpi 120 --left-of HDMI-0 --auto 
 
 #toga - workspaces in multimonitor mode
 workspace 1 output primary
