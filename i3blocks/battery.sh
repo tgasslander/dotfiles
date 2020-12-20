@@ -1,10 +1,10 @@
 #!/bin/bash
 
+# IMPORTANT!
+# Make sure to edit this file with an editor
+# that can display font awesome
+
 BAT=$(acpi -b | awk 'NR==1' | grep -E -o '[0-9][0-9]?%')
-CHRG=$(acpi -b | awk 'NR==1{print $3;exit}')
-if [ $CHRG == "Charging," ]; then
-  CHARGING=
-fi
 
 # DO NOT edit these. They contain font awesome icons that
 # may not be rendered in some terminals (I'm looking at you xterm)
@@ -14,6 +14,17 @@ HALF=
 LOW=
 WARN=
 # --> end "do not edit"
+
+CHRG=$(acpi -b | awk 'NR==1{print $3;exit}')
+if [ $CHRG == "Charging," ]; then
+  CHARGING=
+elif [ $CHRG == "Full," ]; then
+  echo " $FULL 100%"
+elif [ $CHRG == "Full," ]; then
+  echo $L1
+  echo $COLOR_FULL
+  exit 0
+fi
 
 LE_WARN=10
 GE_LOW=$(($LE_WARN+1))
