@@ -1,3 +1,14 @@
+" Handle ALT key in non 8bit terminals
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
+
+
 " Activate hybrid line numbering
 set nu rnu
 
