@@ -33,9 +33,9 @@ nnoremap <Leader>nn :NERDTreeToggle<CR>
 nnoremap <Leader>tgn :set nornu!<CR> :set nonu!<CR>
 
 " ,ev to open my .vimrc
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " ,evr to reload my .vimrc
-nnoremap <leader>evr :source $MYVIMRC
+nnoremap <leader>evr :source $MYVIMRC<CR>
 
 " easier navigation
 nnoremap <C-h> <C-w>h
