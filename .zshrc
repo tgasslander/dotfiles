@@ -120,9 +120,6 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-alias bt1='cd ~/Documents/projects/benchtell/gen-1/code/app-gen-1'
-alias bt2='cd ~/Documents/projects/benchtell/gen-2'
-
 export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
