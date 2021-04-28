@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias emacs='emacs -nw'
+
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
