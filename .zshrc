@@ -123,7 +123,11 @@ SAVEHIST=10000
 alias bt1='cd ~/Documents/projects/benchtell/gen-1/code/app-gen-1'
 alias bt2='cd ~/Documents/projects/benchtell/gen-2'
 
-export PATH=$PATH:~/.emacs.d/bin
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
