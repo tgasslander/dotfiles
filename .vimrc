@@ -37,6 +37,9 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " ,evr to reload my .vimrc
 nnoremap <leader>evr :source $MYVIMRC<CR>
 
+" ,ff to toggle fold
+nnoremap <leader>ff zi
+
 " easier navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -58,3 +61,7 @@ colorscheme monokai
 
 " file-based auto indentation
 filetype plugin indent on
+
+" yaml specifics
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
