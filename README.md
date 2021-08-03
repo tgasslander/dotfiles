@@ -22,3 +22,8 @@ Clone the colorscheme to somewhere and symlink the `monokai.vim` to ~/.vim/color
 ```
 git clone https://github.com/sickill/vim-monokai.git ~/.vim/colors/monokai
 ln -s ~/.vim/colors/monokai/colors/monokai.vim  ~/.vim/colors/
+
+### Typescript support
+```
+git clone https://github.com/Quramy/tsuquyomi.git ~/.vim/pack/vendor/start/tsuquyomi
+```
