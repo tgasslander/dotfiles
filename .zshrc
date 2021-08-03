@@ -122,7 +122,7 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,3 +132,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
+export GOPATH='/home/toga/Documents/projects/go'
