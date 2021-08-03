@@ -6,7 +6,6 @@ Only tested on Kubuntu 20.04
 - i3wm
 - i3blocks
 - fontawesome
-- xterm
 - zsh
 - oh-my-szh
 
