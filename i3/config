@@ -200,3 +200,18 @@ exec_always feh feh --bg-scale /home/toga/.local/share/wallpapers/4K\ No\ Logo\ 
 bindsym $mod+c exec firefox
 bindsym $mod+m exec ~/dotfiles/toga_screens_office.sh
 default_border pixel 0
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh lock, mode "default"
+    bindsym e exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh logout, mode "default"
+    bindsym h exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh hibernate, mode "default"
+    bindsym s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh suspend, mode "default"
+    bindsym r exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+q mode "$mode_system"
