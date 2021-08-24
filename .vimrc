@@ -13,8 +13,14 @@ set timeout ttimeoutlen=50
 set nu rnu
 
 let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=1
 
 set showcmd
+
+" Use smartcase for searches. Ie use only lowercase for case insensitive
+" search
+set ignorecase
+set smartcase
 
 " Enable interactive search (using the spacebar) with highlighting
 set is hls
