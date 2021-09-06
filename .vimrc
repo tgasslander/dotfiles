@@ -18,7 +18,7 @@ Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
 Plug 'tpope/vim-fugitive'         " :Gblame
 Plug 'tpope/vim-rhubarb'          " :GBrowse
 
-Plug 'mileszs/ack.vim'            " Use ack in Vim
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
@@ -53,6 +53,19 @@ set smartcase
 " Enable interactive search (using the spacebar) with highlighting
 set is hls
 nnoremap <Space> /
+
+nnoremap <leader>g :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" Optional. The default behaviour should work for most users.
+let g:grepper               = {}
+"let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix      = 0
+
 
 " Change the leader to , (comma)
 let mapleader=","
@@ -110,11 +123,6 @@ set lazyredraw
 
 " Disable all bells and whistles
 set noerrorbells visualbell t_vb=
-
-" Ack tricks
-let g:ackprg = 'ag --vimgrep'
-nmap <leader>a :Ack! ""<Left>
-nmap <leader>A :Ack! "\b<cword>\b"<CR>
 
 " If fzf installed using git
 set rtp+=~/.fzf
