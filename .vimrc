@@ -67,8 +67,8 @@ let g:grepper.simple_prompt = 1
 let g:grepper.quickfix      = 0
 
 
-" Change the leader to , (comma)
-let mapleader=","
+" Change the leader to SPACE
+let mapleader=" "
 
 " ,eaw to equalize window sizes
 nnoremap <Leader>eaw <C-w>=
@@ -120,6 +120,8 @@ set background=dark
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
 set lazyredraw
+
+let g:airline_powerline_fonts = 1
 
 " Disable all bells and whistles
 set noerrorbells visualbell t_vb=
