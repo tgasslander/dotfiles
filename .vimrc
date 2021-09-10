@@ -1,7 +1,5 @@
 set nocompatible " be iMproved, required
-filetype off     " required
-
-set timeout ttimeoutlen=30
+filetype off
 
 " Auto install Plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -17,6 +15,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
 Plug 'tpope/vim-fugitive'         " :Gblame
 Plug 'tpope/vim-rhubarb'          " :GBrowse
+Plug 'tpope/vim-commentary'
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
@@ -28,36 +27,130 @@ Plug 'styled-components/vim-styled-components'
 
 Plug 'vim-airline/vim-airline'    " Vim powerline
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'cespare/vim-toml'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'mengelbrecht/lightline-bufferline'
+
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdcommenter'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()              " required
 
+" Vim fundamentals
+set timeout ttimeoutlen=50
+set nobackup
+set nowritebackup
+set noswapfile
+set completeopt=menuone
+set undofile " Maintain undo history between sessions
+if has('nvim')
+  set undodir=~/.vim/nvim-undodir
+else 
+  set undodir=~/.vim/vim-undodir
+endif
 " Activate hybrid line numbering
 set nu rnu
+" file-based auto indentation
+filetype plugin indent on
+" Handle ALT key in non 8bit terminals
+if !has('nvim')
+	let c='a'
+	while c <= 'z'
+		exec "set <A-".c.">=\e".c
+		exec "imap \e".c." <A-".c.">"
+		let c = nr2char(1+char2nr(c))
+	endw
+	set encoding=utf8
+endif
+
+" If fzf installed using git
+set rtp+=~/.fzf
+
+" CoC extensions
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+	let g:coc_global_extensions += ['coc-prettier']
+endif
+
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+	let g:coc_global_extensions += ['coc-eslint']
+endif
+
+" let buffers be clickable
+let g:lightline#bufferline#clickable=1
+let g:lightline#bufferline#shorten_path=1
+let g:lightline#bufferline#min_buffer_count=1
+
+let g:lightline = {
+\  'colorscheme': 'jellybeans',
+\  'active': {
+\    'left': [ [], [], [ 'relativepath' ] ],
+\    'right': [ [], [], [ 'lineinfo', 'percent' ] ]
+\  },
+\  'inactive': {
+\    'left': [ [], [], [ 'relativepath' ] ],
+\    'right': [ [], [], [ 'lineinfo', 'percent' ] ]
+\  },
+\  'subseparator': {
+\    'left': '', 'right': ''
+\  },
+\  'tabline': {
+\    'left': [ ['buffers'] ],
+\    'right': [ [] ]
+\  },
+\  'tabline_separator': {
+\    'left': "", 'right': ""
+\  },
+\  'tabline_subseparator': {
+\    'left': "", 'right': ""
+\  },
+\  'component_expand': {
+\    'buffers': 'lightline#bufferline#buffers'
+\  },
+\  'component_raw': {
+\    'buffers': 1
+\  },
+\  'component_type': {
+\    'buffers': 'tabsel'
+\  }
+\}
 
 " Nerdtree settings
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
+" Look and feel
+let g:airline_powerline_fonts = 1
+set guifont=Hack 
+" Disable all bells and whistles
+set noerrorbells visualbell t_vb=
 
+syntax enable
+colorscheme monokai
+set background=dark
+set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
+set ttyfast
+set lazyredraw
 set showcmd
-
 " Use smartcase for searches. Ie use only lowercase for case insensitive
 " search
 set ignorecase
 set smartcase
-
 " Enable interactive search (using the spacebar) with highlighting
 set is hls
-nnoremap <Space> /
-
-nnoremap <leader>g :Grepper -tool ag<cr>
-
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+" nnoremap <Space> /
 
 " Optional. The default behaviour should work for most users.
 let g:grepper               = {}
@@ -65,43 +158,48 @@ let g:grepper               = {}
 let g:grepper.jump          = 1
 let g:grepper.simple_prompt = 1
 let g:grepper.quickfix      = 0
-
-
 " Change the leader to SPACE
 let mapleader=" "
 
+
+" *** Key mappings ***
+nnoremap <leader>s /
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+nnoremap <leader>g :Grepper -tool ag<cr>
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 " ,eaw to equalize window sizes
 nnoremap <Leader>eaw <C-w>=
-
 " ,nn to toggle NERDTree
 nnoremap <Leader>nn :NERDTreeToggle<CR>
-
 " ,tgn
 nnoremap <Leader>tgn :set nornu!<CR> :set nonu!<CR>
-
 " ,ev to open my .vimrc
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " ,evr to reload my .vimrc
-nnoremap <leader>evr :source $MYVIMRC<CR>
-
+nnoremap <leader>evr :source $MYVIMRC \| :PlugInstall<CR>
 " ,ff to toggle fold
 nnoremap <leader>ff zi
-
-" easier navigation
+" Easier navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-
-" Handle ALT key in non 8bit terminals
-let c='a'
-while c <= 'z'
-	exec "set <A-".c.">=\e".c
-	exec "imap \e".c." <A-".c.">"
-	let c = nr2char(1+char2nr(c))
-endw
-
+" Open Buffer
+nnoremap <silent><leader>l :Buffers<CR>
+" Vertically split screen
+nnoremap <silent><leader>sv :vs<CR>
+" Split screen
+nnoremap <silent><leader>sh :split<CR>
 " moving lines and selections
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -113,55 +211,27 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 map j gj
 map k gk
 
-" look and feel
-syntax enable
-colorscheme monokai
-set background=dark
-set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
-set ttyfast
-set lazyredraw
-
-let g:airline_powerline_fonts = 1
-
-" Disable all bells and whistles
-set noerrorbells visualbell t_vb=
-
-" If fzf installed using git
-set rtp+=~/.fzf
 " Map fzf search to CTRL P
-nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-p> :GFiles<CR>
 " Map fzf + ag search to CTRL P
-nnoremap <C-g> :Ag <Cr>
+nnoremap <C-g> :Ag <CR>
+" Map fzf + files to Ctrl s
+nnoremap <C-s> :Files<CR>
 
-" file-based auto indentation
-filetype plugin indent on
-
-" CoC extensions
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
-
-" Add CoC Prettier if prettier is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-" Add CoC ESLint if ESLint is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
-
+" CoC actions
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+" Format
+nmap <leader>f   :CocCommand prettier.formatFile<CR>
+" Formatting selected code
+xmap <leader>fs  <Plug>(coc-format-selected)
+nmap <leader>fs  <Plug>(coc-format-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Format
-nmap <leader>f   :CocCommand prettier.formatFile<CR>
-
 " yaml specifics
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
