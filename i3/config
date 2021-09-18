@@ -201,8 +201,8 @@ bindsym $mod+c exec firefox
 bindsym $mod+m exec ~/dotfiles/toga_screens_office.sh
 default_border pixel 0
 
-set $shutdown Shutdown (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$shutdown	" {
+set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$system" {
     bindsym l exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh lock, mode "default"
     bindsym e exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh logout, mode "default"
     bindsym h exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh hibernate, mode "default"
@@ -214,7 +214,7 @@ mode "$shutdown	" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+q mode "$shutdown"
+bindsym $mod+q mode "$system"
 
 set $lang Us (0), SE (1)
 mode "$lang" {
