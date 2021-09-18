@@ -1,13 +1,9 @@
-set nocompatible " be iMproved, required
-filetype off
-
 " Auto install Plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 
 " Keep Plug commands between plug#begin() and plug#end().
 call plug#begin()
@@ -42,16 +38,21 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'arcticicestudio/nord-vim'
+Plug 'tomasiser/vim-code-dark'
 
 " All of your Plugins must be added before the following line
 call plug#end()              " required
 
 " Vim fundamentals
 set timeout ttimeoutlen=50
+set nocompatible " be iMproved, required
+filetype off
 set nobackup
 set nowritebackup
 set noswapfile
 set completeopt=menuone
+set shortmess+=c
 set undofile " Maintain undo history between sessions
 if has('nvim')
   set undodir=~/.vim/nvim-undodir
@@ -95,7 +96,7 @@ let g:lightline#bufferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
 
 let g:lightline = {
-\  'colorscheme': 'jellybeans',
+\  'colorscheme': 'codedark',
 \  'active': {
 \    'left': [ [], [], [ 'relativepath' ] ],
 \    'right': [ [], [], [ 'lineinfo', 'percent' ] ]
@@ -138,8 +139,9 @@ set guifont=Hack
 set noerrorbells visualbell t_vb=
 
 syntax enable
-colorscheme monokai
+colorscheme codedark
 set background=dark
+" let g:airline_theme = 'codedark'
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
 set lazyredraw
@@ -232,6 +234,37 @@ nmap <leader>fs  <Plug>(coc-format-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
 " yaml specifics
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
