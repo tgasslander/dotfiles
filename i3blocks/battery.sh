@@ -16,7 +16,8 @@ WARN=
 # --> end "do not edit"
 
 CHRG=$(acpi -b | awk 'NR==1{print $3;exit}')
-if [ $CHRG == "Charging," ]; then
+CHRGA=$(acpi -a | awk 'NR==1{print $3;exit}')
+if [ $CHRG == "Charging," ] || [ $CHRGA == "on-line" ]; then
   CHARGING=
 elif [ $CHRG == "Full," ]; then
   echo " $FULL 100%"
