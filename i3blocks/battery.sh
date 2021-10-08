@@ -4,7 +4,7 @@
 # Make sure to edit this file with an editor
 # that can display font awesome
 
-BAT=$(acpi -b | awk 'NR==1' | grep -E -o '[0-9][0-9]?%')
+BAT=$(acpi -b | awk 'NR==2' | grep -E -o '[0-9][0-9]?%')
 
 # DO NOT edit these. They contain font awesome icons that
 # may not be rendered in some terminals (I'm looking at you xterm)
