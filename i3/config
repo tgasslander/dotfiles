@@ -199,6 +199,7 @@ workspace 3 output primary
 exec_always feh feh --bg-scale /home/toga/.local/share/wallpapers/4K\ No\ Logo\ PL\ 1824.png --bg-scale /home/toga/Pictures/Nature\ Nature\ 029\ 4K.png
 bindsym $mod+c exec firefox
 bindsym $mod+m exec ~/dotfiles/toga_screens_office.sh
+bindsym $mod+shift+m exec xrandr --fb 3840x2160
 default_border pixel 0
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -206,7 +207,7 @@ mode "$system" {
     bindsym l exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh lock, mode "default"
     bindsym e exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh logout, mode "default"
     bindsym h exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh hibernate, mode "default"
-    bindsym s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh suspend, mode "default"
+    bindsym s exec --no-startup-id /home/toga/dotfiles/i2/i3exit.sh suspend, mode "default"
     bindsym r exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh reboot, mode "default"
     bindsym Shift+s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh shutdown, mode "default"
 
