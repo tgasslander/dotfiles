@@ -207,7 +207,7 @@ mode "$system" {
     bindsym l exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh lock, mode "default"
     bindsym e exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh logout, mode "default"
     bindsym h exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh hibernate, mode "default"
-    bindsym s exec --no-startup-id /home/toga/dotfiles/i2/i3exit.sh suspend, mode "default"
+    bindsym s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh suspend, mode "default"
     bindsym r exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh reboot, mode "default"
     bindsym Shift+s exec --no-startup-id /home/toga/dotfiles/i3/i3exit.sh shutdown, mode "default"
 
