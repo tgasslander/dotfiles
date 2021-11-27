@@ -184,6 +184,8 @@ nnoremap <Leader>eaw <C-w>=
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 " ,tgn
 nnoremap <Leader>tgn :set nornu!<CR> :set nonu!<CR>
+" , nt to nohl
+nnoremap <Leader>tn :nohl<CR>
 " ,ev to open my .vimrc
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " ,evr to reload my .vimrc
