@@ -136,3 +136,5 @@ export GOPATH='/home/toga/Documents/projects/go'
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
 alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech"
+alias vv=nvim
+alias e=nvim
