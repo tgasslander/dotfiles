@@ -1,3 +1,4 @@
+" ** Plugins **
 " Auto install Plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -5,45 +6,33 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Keep Plug commands between plug#begin() and plug#end().
 call plug#begin()
-
+Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
 Plug 'tpope/vim-fugitive'         " :Gblame
 Plug 'tpope/vim-rhubarb'          " :GBrowse
 Plug 'tpope/vim-commentary'
-
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
 Plug 'styled-components/vim-styled-components'
-
 Plug 'vim-airline/vim-airline'    " Vim powerline
-
-Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'cespare/vim-toml'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mengelbrecht/lightline-bufferline'
-
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-
 Plug 'arcticicestudio/nord-vim'
 Plug 'tomasiser/vim-code-dark'
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call plug#end()              " required
-
-" Vim fundamentals
+" ** Vim native settings **
 set timeout ttimeoutlen=50
 set nocompatible " be iMproved, required
 filetype off
@@ -58,10 +47,9 @@ if has('nvim')
 else 
   set undodir=~/.vim/vim-undodir
 endif
-" Activate hybrid line numbering
-set nu rnu
-" file-based auto indentation
+set nu rnu " relative line numbering
 filetype plugin indent on
+
 " Handle ALT key in non 8bit terminals
 if !has('nvim')
 	let c='a'
@@ -73,6 +61,7 @@ if !has('nvim')
 	set encoding=utf8
 endif
 
+" ** LSP/IDE-style settings
 " If fzf installed using git
 set rtp+=~/.fzf
 
@@ -131,7 +120,7 @@ let g:lightline = {
 " Nerdtree settings
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
-" Look and feel
+" ** Look and feel **
 let g:airline_powerline_fonts = 1
 set guifont=Hack 
 " Disable all bells and whistles
