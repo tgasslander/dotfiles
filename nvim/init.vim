@@ -43,6 +43,7 @@ source ~/dotfiles/nvim/include/vim-easy-align.vim
 source ~/dotfiles/nvim/include/nerdcommenter.vim
 " source ~/dotfiles/nvim/include/filetypespecifics.vim
 source ~/dotfiles/nvim/include/lookandfeel.vim
+source ~/dotfiles/nvim/include/markdown-preview.vim
 Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
