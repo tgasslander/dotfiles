@@ -14,7 +14,7 @@ Being tested on MacOS.
 No longer being actively used so the .vimrc is gonna stay as is.
 
 ## nvim
-Some essential plugins
+A bunch of plugins and settings that makes an IDE of nvim in `nvim/`.
 
 ### Prerequisites
 Gotta install a patched font to work with the devicons.
