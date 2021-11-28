@@ -1,6 +1,7 @@
 # dotfiles
 Well. My dotfiles.
-Only tested on Kubuntu 20.04
+Only tested on Kubuntu 20.04 in i3wm.
+Being tested on MacOS.
 
 ## Dependencies
 - i3wm
@@ -10,20 +11,14 @@ Only tested on Kubuntu 20.04
 - oh-my-szh
 
 ## vim
-Some essential plugins
-### NerdTree
-Install:
-```
-git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
-```
-### Monokai colorscheme
-Clone the colorscheme to somewhere and symlink the `monokai.vim` to ~/.vim/colors
-```
-git clone https://github.com/sickill/vim-monokai.git ~/.vim/colors/monokai
-ln -s ~/.vim/colors/monokai/colors/monokai.vim  ~/.vim/colors/
+No longer being actively used so the .vimrc is gonna stay as is.
 
-### Typescript support
+## nvim
+Some essential plugins
+
+### Prerequisites
+Gotta install a patched font to work with the devicons.
 ```
-git clone https://github.com/Quramy/tsuquyomi.git ~/.vim/pack/vendor/start/tsuquyomi
-```
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+````
