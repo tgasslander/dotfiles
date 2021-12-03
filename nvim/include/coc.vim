@@ -1,7 +1,7 @@
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " CoC extensions
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-markdownlint']
 
 " Add CoC Prettier if prettier is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
