@@ -45,6 +45,7 @@ source ~/dotfiles/nvim/include/nerdcommenter.vim
 source ~/dotfiles/nvim/include/lookandfeel.vim
 source ~/dotfiles/nvim/include/markdown-preview.vim
 Plug 'neovim/nvim-lspconfig'
+source ~/dotfiles/nvim/include/vim-go.vim
 
 call plug#end()
 
