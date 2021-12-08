@@ -29,7 +29,6 @@ source ~/dotfiles/nvim/include/nerdtree.vim
 source ~/dotfiles/nvim/include/vim-gitgutter.vim
 source ~/dotfiles/nvim/include/vim-fugitive.vim
 source ~/dotfiles/nvim/include/vim-rhubarb.vim
-source ~/dotfiles/nvim/include/vim-commentary.vim
 source ~/dotfiles/nvim/include/vim-grepper.vim
 source ~/dotfiles/nvim/include/vim-javascript.vim
 source ~/dotfiles/nvim/include/vim-jsx-pretty.vim
