@@ -33,3 +33,5 @@ cmd + shift - 9 : yabai -m window --space 9
 
 ctrl - f : yabai -m window --toggle float
 cmd - f : yabai -m window --toggle native-fullscreen
+
+cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 --single-instance -d ~
