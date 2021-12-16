@@ -113,7 +113,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emacs='emacs -nw'
 
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -127,6 +126,14 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
+
+SERVICE="emacs"
+if pgrep -x "$SERVICE" >/dev/null
+then
+else
+    echo "Starting $SERVICE stopped"
+		emacs --daemon
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -142,4 +149,5 @@ alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
 alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech"
 alias vv=nvim
 alias e=nvim
+alias emacs='emacsclient'
 alias gs='git status'
