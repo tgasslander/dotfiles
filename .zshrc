@@ -152,6 +152,7 @@ alias vv=nvim
 alias e=nvim
 alias emacs='emacsclient'
 alias gs='git status'
+alias glp='git log --pretty=oneline --graph'
 
 # React Native Development environment
 export ANDROID_HOME=$HOME/Android/Sdk
