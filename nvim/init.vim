@@ -35,7 +35,7 @@ source ~/dotfiles/nvim/include/vim-jsx-pretty.vim
 source ~/dotfiles/nvim/include/vim-graphql.vim
 source ~/dotfiles/nvim/include/styled-components.vim
 source ~/dotfiles/nvim/include/fzf.vim
-source ~/dotfiles/nvim/include/coc.vim
+" source ~/dotfiles/nvim/include/coc.vim
 source ~/dotfiles/nvim/include/editorconfig.vim
 source ~/dotfiles/nvim/include/vim-toml.vim
 source ~/dotfiles/nvim/include/vim-easy-align.vim
@@ -43,12 +43,26 @@ source ~/dotfiles/nvim/include/nerdcommenter.vim
 " source ~/dotfiles/nvim/include/filetypespecifics.vim
 source ~/dotfiles/nvim/include/lookandfeel.vim
 source ~/dotfiles/nvim/include/markdown-preview.vim
-Plug 'neovim/nvim-lspconfig'
-source ~/dotfiles/nvim/include/vim-go.vim
+source ~/dotfiles/nvim/include/nvim-treesitter.vim
+source ~/dotfiles/nvim/include/nvim-lsp-installer.vim
+source ~/dotfiles/nvim/include/vim-lspconfig.vim
+" lua require('lspconfig')
+source ~/dotfiles/nvim/include/completion-vim.vim
+
+" source ~/dotfiles/nvim/include/vim-go.vim
+source ~/dotfiles/nvim/include/vim-surround.vim
 
 call plug#end()
 
+" Call plugin configs that need to run after the plugins have loaded
+doautocmd User PlugLoaded
+
 colorscheme codedark
+
+" move to separate config
+" lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" lua require'vim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" End - Move to
 
 sign define LspDiagnosticsSignError text=🔴
 sign define LspDiagnosticsSignWarning text=🟠
