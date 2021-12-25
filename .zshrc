@@ -125,7 +125,9 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-export PATH=$PATH:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
+# Gopls in PATH
+GOPLS_PATH=/home/toga/go/bin
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPLS_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
@@ -147,7 +149,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
-# export GOPATH='/home/toga/Documents/projects/go'
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
 alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech/code"
