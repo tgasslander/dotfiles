@@ -16,7 +16,7 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tomasiser/vim-code-dark'
-  use 'preservim/nerdtree'
+  use 'preservim/nerdtred'
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
@@ -51,8 +51,6 @@ vim.cmd [[
 	let g:NERDTreeWinPos = "right"
 	let NERDTreeShowHidden=1
 ]]
-vim.api.nvim_set_keymap('n', '<Leader>nn', ':NERDTreeToggle<CR>', {noremap=true})
-
 
 --Set highlight on search
 vim.o.hlsearch = false
@@ -94,6 +92,13 @@ vim.g.lightline = {
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+--Nerdtree settings
+vim.api.nvim_set_keymap('n', '<Leader>nn', ':NERDTreeToggle<CR>', {noremap=true})
+vim.cmd [[
+	nnoremap <expr> <leader>nm g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
+]]
+
 
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
