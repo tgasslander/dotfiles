@@ -14,10 +14,10 @@ vim.api.nvim_set_keymap('n', '<Leader>evr', ':source $MYVIMRC<CR>', { noremap = 
 vim.api.nvim_set_keymap('', '<Leader>ff', 'zi', { noremap = true, silent = true })
 
 -- Split screen vertically
-vim.api.nvim_set_keymap('n', '<Leader>sv', ':vs', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>sv', ':vs<CR>', { noremap = true, silent = true })
 
 -- Split screen horizontally
-vim.api.nvim_set_keymap('n', '<Leader>sh', ':split', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>sh', ':split<CR>', { noremap = true, silent = true })
 
 -- Easier navigation
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
@@ -25,3 +25,4 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<Leader>tn', ':nohl<CR>', { noremap = true, silent = false})
