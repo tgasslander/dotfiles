@@ -4,7 +4,7 @@
 # Make sure to edit this file with an editor
 # that can display font awesome
 
-BAT=$(acpi -b | awk 'NR==1' | grep -E -o '[0-9][0-9]?%')
+BAT=$(cat /sys/class/power_supply/BAT0/capacity)
 
 # DO NOT edit these. They contain font awesome icons that
 # may not be rendered in some terminals (I'm looking at you xterm)
@@ -15,7 +15,7 @@ LOW=
 WARN=
 # --> end "do not edit"
 
-CHRG=$(acpi -b | awk 'NR==1{print $3;exit}')
+CHRG=$(cat /sys/class/power_supply/BAT0/status)
 CHRGA=$(acpi -a | awk 'NR==1{print $3;exit}')
 if [ $CHRG == "Charging," ] || [ $CHRGA == "on-line" ]; then
   CHARGING=
@@ -44,25 +44,25 @@ COLOR_GOOD="#FFFFFF"
 COLOR_FULL="#FFFFFF"
 
 
-VAL=${BAT%?}
-if [ "$VAL" -ge 0 ] && [ "$VAL" -le $LE_WARN ]; then
-  L1="$CHARGING $WARN $VAL" 
+# BAT=$BAT
+if [ "$BAT" -ge 0 ] && [ "$BAT" -le $LE_WARN ]; then
+  L1="$CHARGING $WARN $BAT" 
   L2=$L1
   L3=$COLOR_WARN
-elif [ "$VAL" -ge $GE_LOW ] &&  [ "$VAL" -le $LE_LOW ]; then
-  L1="$CHARGING $LOW $VAL" 
+elif [ "$BAT" -ge $GE_LOW ] &&  [ "$BAT" -le $LE_LOW ]; then
+  L1="$CHARGING $LOW $BAT" 
   L2=$L1
   L3=$COLOR_LOW
-elif [ "$VAL" -ge $GE_HALF ] &&  [ "$VAL" -le $LE_HALF ]; then
-  L1="$CHARGING $HALF $VAL"
+elif [ "$BAT" -ge $GE_HALF ] &&  [ "$BAT" -le $LE_HALF ]; then
+  L1="$CHARGING $HALF $BAT"
   L2=$L1
   L3=$COLOR_HALF
-elif [ "$VAL" -ge $GE_GOOD ] &&  [ "$VAL" -le $LE_GOOD ]; then
-  L1="$CHARGING $GOOD $VAL"
-  L1=$L1
+elif [ "$BAT" -ge $GE_GOOD ] &&  [ "$BAT" -le $LE_GOOD ]; then
+  L1="$CHARGING $GOOD $BAT"
+  L2=$L1
   L3=$COLOR_GOOD
-elif [ "$VAL" -ge $GE_FULL ] &&  [ "$VAL" -le $LE_FULL ]; then
-  L1="$CHARGING $FULL $VAL"
+elif [ "$BAT" -ge $GE_FULL ] &&  [ "$BAT" -le $LE_FULL ]; then
+  L1="$CHARGING $FULL $BAT"
   L2=$L1
   L3=$COLOR_FULL
 fi
