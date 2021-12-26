@@ -12,6 +12,8 @@ vim.cmd [[
   augroup end
 ]]
 
+require('keybindings')
+
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
