@@ -125,15 +125,16 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Gopls in PATH
+# OS-specific PATH additions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	GOPLS_PATH=/home/toga/go/bin
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	GOPLS_PATH=/Users/toga/go/bin
+	LIMELIGHT_PATH=/usr/local/bin
 fi
 
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPLS_PATH
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
