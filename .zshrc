@@ -126,7 +126,13 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Gopls in PATH
-GOPLS_PATH=/home/toga/go/bin
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	GOPLS_PATH=/home/toga/go/bin
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	GOPLS_PATH=/Users/toga/go/bin
+fi
+
+
 export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPLS_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
