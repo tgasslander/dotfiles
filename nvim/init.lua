@@ -17,7 +17,8 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tomasiser/vim-code-dark'
-  use 'preservim/nerdtred'
+  use 'preservim/nerdtree'
+  use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
@@ -39,6 +40,7 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'glepnir/lspsaga.nvim'
 end)
 
 
