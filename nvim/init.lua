@@ -21,7 +21,8 @@ require('packer').startup(function()
   use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+  -- use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+  use 'preservim/nerdcommenter'
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
@@ -331,3 +332,24 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+
+-- Create default mappings
+vim.g.NERDCreateDefaultMappings = 1
+-- Add spaces after comment delimiters by default
+vim.g.NERDSpaceDelims = 1
+
+-- Use compact syntax for prettified multi-line comments
+vim.g.NERDCompactSexyComs = 1
+
+-- Align line-wise comment delimiters flush left instead of following code indentation
+vim.g.NERDDefaultAlign = 'left'
+
+-- Allow commenting and inverting empty lines (useful when commenting a region)
+vim.g.NERDCommentEmptyLines = 1
+
+-- Enable trimming of trailing whitespace when uncommenting
+vim.g.NERDTrimTrailingWhitespace = 1
+
+-- Enable NERDCommenterToggle to check all selected lines is commented or not
+vim.g.NERDToggleCheckAllLines = 1
