@@ -25,7 +25,6 @@ require('packer').startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
-  -- use 'itchyny/lightline.vim' -- Fancier statusline
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- Add git related info in the signs columns and popups
@@ -88,13 +87,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme codedark]]
-
---Set statusbar
--- vim.g.lightline = {
---   colorscheme = 'codedark',
---   active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
---   component_function = { gitbranch = 'fugitive#head' },
--- }
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
