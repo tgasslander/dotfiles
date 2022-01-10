@@ -45,6 +45,12 @@ require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+  use {
+    'iamcco/markdown-preview.nvim',
+    ft = 'markdown',
+    run = 'cd app && yarn install'
+  }
+
 end)
 
 require('lualine').setup()
@@ -104,6 +110,8 @@ vim.cmd [[
 	nnoremap <expr> <leader>nm g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
 ]]
 
+-- MarkdownPreview settings
+vim.api.nvim_set_keymap('n', '<Leader>md', ':MarkdownPreviewToggle<CR>', { noremap = true })
 
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
