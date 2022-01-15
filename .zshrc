@@ -168,6 +168,12 @@ alias glp='git log --pretty=oneline --graph'
 alias gib='git branch -v | tee'
 alias gab='git branch -vvv | tee'
 
+# Java stuff
+DEV_TOOLS="/home/$USER/JavaInstall"
+JAVA_HOME="$DEV_TOOLS/JDK/jdk-11.0.13+8"
+export JAVA_HOME
+PATH="$JAVA_HOME/bin:$PATH"
+
 # React Native Development environment
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
