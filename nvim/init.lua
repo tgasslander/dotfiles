@@ -51,6 +51,32 @@ require('packer').startup(function()
     run = 'cd app && yarn install'
   }
 
+  use {
+	  "jose-elias-alvarez/null-ls.nvim",
+	  requires = "kyazdani42/nvim-web-devicons",
+	  config = function()
+		  require("null-ls").setup({
+		    sources = {
+			require("null-ls").builtins.formatting.stylua,
+			require("null-ls").builtins.diagnostics.eslint,
+			require("null-ls").builtins.completion.spell,
+		    },
+		})
+	end
+  }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
 end)
 
 require('lualine').setup()
