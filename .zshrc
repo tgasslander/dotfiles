@@ -167,6 +167,7 @@ alias gs='git status'
 alias glp='git log --pretty=oneline --graph'
 alias gib='git branch -v | tee'
 alias gab='git branch -vvv | tee'
+alias gd='git diff --color | tee'
 
 # gerrit
 alias gerritpush='git push origin HEAD:refs/for/master'
