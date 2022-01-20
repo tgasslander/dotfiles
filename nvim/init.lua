@@ -87,6 +87,11 @@ require('lualine').setup()
         --[[server:setup(opts)]]
 --[[end)]]
 
+-- Toggle LSP diagnostics window
+vim.api.nvim_set_keymap('n', '<leader>d', ':TroubleToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>Trouble quickfix<CR>', { noremap = true, silent = true })
+
+
 vim.cmd [[
 	let g:NERDTreeWinPos = "right"
 	let NERDTreeShowHidden=1
