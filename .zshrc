@@ -160,13 +160,16 @@ export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
 alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech/code"
-alias gojo="cd /home/toga/Documents/projects/jotojo/lab/backend/"
+alias gojo="cd /home/toga/Documents/projects/jotojo"
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
 alias glp='git log --pretty=oneline --graph'
 alias gib='git branch -v | tee'
 alias gab='git branch -vvv | tee'
+
+# gerrit
+alias gerritpush='git push origin HEAD:refs/for/master'
 
 # Java stuff
 DEV_TOOLS="/home/$USER/JavaInstall"
