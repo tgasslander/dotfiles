@@ -25,4 +25,5 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
+-- Turn off current highlights
 vim.api.nvim_set_keymap('n', '<Leader>tn', ':nohl<CR>', { noremap = true, silent = false})
