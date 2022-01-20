@@ -52,17 +52,11 @@ require('packer').startup(function()
   }
 
   use {
-	  "jose-elias-alvarez/null-ls.nvim",
-	  requires = "kyazdani42/nvim-web-devicons",
-	  config = function()
-		  require("null-ls").setup({
-		    sources = {
-			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.diagnostics.eslint,
-			require("null-ls").builtins.completion.spell,
-		    },
-		})
-	end
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
   }
 
   use {
@@ -80,6 +74,12 @@ require('packer').startup(function()
 end)
 
 require('lualine').setup()
+require('null-ls').setup({
+	sources = {
+		require("null-ls").builtins.formatting.stylua,
+		require("null-ls").builtins.formatting.eslint,
+	},
+})
 
 --[[local lsp_installer = require('williamboman/nvim-lsp-installer')]]
 --[[lsp_installer.on_server_ready(function(server)]]
