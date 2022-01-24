@@ -88,7 +88,7 @@ require('null-ls').setup({
 --[[end)]]
 
 -- Toggle LSP diagnostics window
-vim.api.nvim_set_keymap('n', '<leader>d', ':TroubleToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>d', ':TroubleToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>Trouble quickfix<CR>', { noremap = true, silent = true })
 
 
