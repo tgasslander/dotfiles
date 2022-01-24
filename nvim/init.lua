@@ -71,13 +71,47 @@ require('packer').startup(function()
     end
   }
 
+  use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
+
 end)
 
+local null_ls = require 'null-ls'
+local b = null_ls.builtins
 require('lualine').setup()
+
 require('null-ls').setup({
 	sources = {
-		require("null-ls").builtins.formatting.eslint,
-		require("null-ls").builtins.formatting.prettier,
+      -- null_ls.builtins.diagnostics.eslint,
+      -- null_ls.builtins.code_actions.eslint,
+      -- null_ls.builtins.formatting.prettier,
+
+      b.diagnostics.eslint.with {
+          prefer_local = 'node_modules/.bin',
+      },
+      b.formatting.prettier.with {
+        prefer_local = 'node_modules/.bin',
+        filetypes = {
+          'typescriptreact',
+          'typescript',
+          'javascriptreact',
+          'javascript',
+          'json',
+          'jsonc',
+          'css',
+          'less',
+          'scss',
+          'html',
+          'yaml',
+        },
+      },
+      b.formatting.stylua,
+      b.diagnostics.shellcheck,
+      b.code_actions.shellcheck,
+      b.formatting.shfmt,
+      b.diagnostics.hadolint,
+      b.diagnostics.markdownlint,
+      b.diagnostics.write_good,
+      b.formatting.gofumpt,
 	},
 })
 
@@ -86,10 +120,6 @@ require('null-ls').setup({
         --[[local opts = {}]]
         --[[server:setup(opts)]]
 --[[end)]]
-
--- Toggle LSP diagnostics window
-vim.api.nvim_set_keymap('n', '<Leader>d', ':TroubleToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>Trouble quickfix<CR>', { noremap = true, silent = true })
 
 
 vim.cmd [[
@@ -271,6 +301,11 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  -- Toggle LSP diagnostics window
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', ':TroubleToggle<CR>', opts)
+  vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>Trouble quickfix<CR>', opts)
+  -- Format
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', ':Format<CR>', opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
@@ -279,7 +314,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'gopls'}
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
