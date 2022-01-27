@@ -22,3 +22,8 @@ Gotta install a patched font to work with the devicons.
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ````
+
+#### Install the Powerlevel ZSH theme
+```
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
