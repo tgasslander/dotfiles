@@ -125,14 +125,18 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
 
+if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
 if pgrep -x "$SERVICE" >/dev/null
 then
 else
+    export PATH=$PATH:~/.emacs.d/bin
     echo "Starting $SERVICE stopped"
-		emacs --daemon
+    emacs --daemon
+    alias emacs='emacsclient'
+fi
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -150,7 +154,6 @@ alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech/code"
 alias gojo="cd /home/toga/Documents/projects/jotojo/lab/backend/"
 alias vv=nvim
 alias e=nvim
-alias emacs='emacsclient'
 alias gs='git status'
 alias glp='git log --pretty=oneline --graph'
 alias gib='git branch -v | tee'
