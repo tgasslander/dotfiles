@@ -54,14 +54,6 @@ require('packer').startup(function()
   }
 
   use {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-        require("null-ls").setup()
-    end,
-    requires = { "nvim-lua/plenary.nvim" },
-  }
-
-  use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
@@ -84,46 +76,6 @@ require('packer').startup(function()
     )
 
 end)
-
-local null_ls = require 'null-ls'
-local b = null_ls.builtins
-require('lualine').setup()
-
-require('null-ls').setup({
-	sources = {
-      -- null_ls.builtins.diagnostics.eslint,
-      -- null_ls.builtins.code_actions.eslint,
-      -- null_ls.builtins.formatting.prettier,
-
-      b.diagnostics.eslint.with {
-          prefer_local = 'node_modules/.bin',
-      },
-      b.formatting.prettier.with {
-        prefer_local = 'node_modules/.bin',
-        filetypes = {
-          'typescriptreact',
-          'typescript',
-          'javascriptreact',
-          'javascript',
-          'json',
-          'jsonc',
-          'css',
-          'less',
-          'scss',
-          'html',
-          'yaml',
-        },
-      },
-      b.formatting.stylua,
-      b.diagnostics.shellcheck,
-      b.code_actions.shellcheck,
-      b.formatting.shfmt,
-      b.diagnostics.hadolint,
-      b.diagnostics.markdownlint,
-      b.diagnostics.write_good,
-      b.formatting.gofumpt,
-	},
-})
 
 --[[local lsp_installer = require('williamboman/nvim-lsp-installer')]]
 --[[lsp_installer.on_server_ready(function(server)]]
