@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/toga/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "https://github.com/preservim/nerdtree"
   },
+  ["nord-vim"] = {
+    loaded = true,
+    path = "/Users/toga/.local/share/nvim/site/pack/packer/start/nord-vim",
+    url = "https://github.com/arcticicestudio/nord-vim"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/toga/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -133,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/toga/.local/share/nvim/site/pack/packer/start/vim-code-dark",
     url = "https://github.com/tomasiser/vim-code-dark"
+  },
+  ["vim-solarized8"] = {
+    loaded = true,
+    path = "/Users/toga/.local/share/nvim/site/pack/packer/start/vim-solarized8",
+    url = "https://github.com/lifepillar/vim-solarized8"
   }
 }
 

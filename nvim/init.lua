@@ -33,6 +33,9 @@ require('packer').startup(function()
   -- use 'ray-x/navigator.lua'
 
   use 'tomasiser/vim-code-dark'
+  use 'lifepillar/vim-solarized8'
+  use 'arcticicestudio/nord-vim'
+  use 'joshdick/onedark.vim'
   use 'preservim/nerdtree'
   use 'editorconfig/editorconfig-vim'
   -- use 'tpope/vim-fugitive' -- Git commands in nvim
@@ -41,7 +44,6 @@ require('packer').startup(function()
   use 'preservim/nerdcommenter'
   -- -- UI to select things (files, grep results, open buffers...)
   -- use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use 'joshdick/onedark.vim' -- Theme inspired by Atom
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- -- Add git related info in the signs columns and popups
@@ -111,7 +113,9 @@ vim.wo.signcolumn = 'yes'
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme codedark]]
+vim.g.nord_italic = 1
+vim.g.nord_italic_comments = 1
+vim.cmd [[colorscheme nord]]
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
