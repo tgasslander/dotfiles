@@ -20,10 +20,6 @@ require('packer').startup(function()
   use {'ray-x/navigator.lua', 
   	requires = { 'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   }
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-  -- use {'ray-x/guihua.lua', run = 'cd lua/fzy && make' }
-  -- use 'ray-x/navigator.lua'
 
   use 'tomasiser/vim-code-dark'
   -- If you are using Packer
@@ -32,22 +28,27 @@ require('packer').startup(function()
   use 'joshdick/onedark.vim'
   use 'preservim/nerdtree'
   use 'editorconfig/editorconfig-vim'
-  -- use 'tpope/vim-fugitive' -- Git commands in nvim
+  use 'tpope/vim-fugitive' -- Git commands in nvim
   -- use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   -- -- use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'preservim/nerdcommenter'
   -- -- UI to select things (files, grep results, open buffers...)
-  -- use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
+
   -- -- Add git related info in the signs columns and popups
   -- use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   -- -- Highlight, edit, and navigate code using a fast incremental parsing library
-  -- -- Additional textobjects for treesitter
-  -- -- use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+  -- Additional textobjects for treesitter
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- -- use 'williamboman/nvim-lsp-installer'
-  -- -- use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   -- -- use 'hrsh7th/cmp-nvim-lsp'
+
   -- use 'saadparwaiz1/cmp_luasnip'
   -- -- use 'L3MON4D3/LuaSnip' -- Snippets plugin
   -- -- use 'glepnir/lspsaga.nvim'
@@ -55,15 +56,25 @@ require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+
+  use {'fatih/vim-go',
+    { run = ':GoInstallBinaries' }
+  }
+
   -- use {
   --   'iamcco/markdown-preview.nvim',
   --   ft = 'markdown',
   --   run = 'cd app && yarn install'
   -- }
+  --
+  use 'ray-x/go.nvim'
+
 
 end)
 
-require'navigator'.setup()
+-- require('navigator').setup()
+require('navigator_settings')
+require('golang')
 
 require('lualine').setup()
 
