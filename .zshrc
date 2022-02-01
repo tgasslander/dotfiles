@@ -125,6 +125,8 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
+# export GOPATH=/usr/local/go
+
 # OS-specific PATH additions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	GOPLS_PATH=/home/toga/go/bin
@@ -134,7 +136,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPLS_PATH:$LIMELIGHT_PATH
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOPATH/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
@@ -159,8 +161,8 @@ export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
 
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
-alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech/code"
-alias gojo="cd /home/toga/Documents/projects/jotojo"
+alias goplex="cd $HOME/Documents/projects/assignments/plexian/tech/code"
+alias gojo="cd $HOME/Documents/projects/jotojo"
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
