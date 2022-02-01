@@ -17,7 +17,6 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  
   use {'ray-x/navigator.lua', 
   	requires = { 'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   }
@@ -27,8 +26,9 @@ require('packer').startup(function()
   -- use 'ray-x/navigator.lua'
 
   use 'tomasiser/vim-code-dark'
-  use 'lifepillar/vim-solarized8'
-  use 'arcticicestudio/nord-vim'
+  -- If you are using Packer
+  use 'shaunsingh/nord.nvim'
+  -- use 'arcticicestudio/nord-vim'
   use 'joshdick/onedark.vim'
   use 'preservim/nerdtree'
   use 'editorconfig/editorconfig-vim'
@@ -108,8 +108,8 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.g.nord_italic = 1
-vim.g.nord_italic_comments = 1
-vim.cmd [[colorscheme nord]]
+vim.cmd [[colorscheme onedark]]
+-- require('onedark').set()
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
