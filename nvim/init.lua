@@ -129,6 +129,13 @@ require('null-ls').setup({
         --[[server:setup(opts)]]
 --[[end)]]
 
+require'cmp'.setup {
+ sources = {
+ 	{ name = 'cmp_tabnine' },
+ },
+  use "hrsh7th/nvim-compe" --completion
+}
+
 
 vim.cmd [[
 	let g:NERDTreeWinPos = "right"
