@@ -68,13 +68,13 @@ require('packer').startup(function()
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
   use 'ray-x/go.nvim'
 
-  return require("packer").startup(
-     function(use)
-        -- use "hrsh7th/nvim-cmp" --completion
-        use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
-     end
-    )
-
+  -- require("packer").startup(
+  --    function(use)
+  --       -- use "hrsh7th/nvim-cmp" --completion
+  --       use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  --    end
+  --   )
+  
 end)
 
 --[[local lsp_installer = require('williamboman/nvim-lsp-installer')]]
