@@ -18,9 +18,9 @@ local use = require('packer').use
 require('packer').startup(function()
 
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'tomasiser/vim-code-dark'
   use 'shaunsingh/nord.nvim'
   use 'arcticicestudio/nord-vim'
+  use 'Mofiqul/vscode.nvim'
   use 'preservim/nerdtree'
   use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
@@ -46,10 +46,12 @@ require('packer').startup(function()
   use { 'tami5/lspsaga.nvim' }  -- nightly
   -- use 'glepnir/lspsaga.nvim'
   use 'ryanoasis/vim-devicons'
-  -- use 'kyazdani42/nvim-web-devicons'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'ryanoasis/vim-devicons', opt = true },
+    options = {
+        theme = 'vscode',
+    }
   }
   use {
     'iamcco/markdown-preview.nvim',
@@ -60,7 +62,7 @@ require('packer').startup(function()
 
   use {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = { 'ryanoasis/vim-devicons' },
     config = function()
       require("trouble").setup {
         -- your configuration goes here
@@ -93,6 +95,7 @@ require'cmp'.setup {
   use "hrsh7th/nvim-compe" --completion
 }
 
+require('lualine').setup()
 
 vim.cmd [[
 	let g:NERDTreeWinPos = "right"
@@ -126,7 +129,8 @@ vim.wo.signcolumn = 'yes'
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme codedark]]
+vim.g.vscode_style = 'dark'
+vim.cmd [[colorscheme vscode]]
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
