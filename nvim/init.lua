@@ -23,7 +23,6 @@ require('packer').startup(function()
   use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-  -- use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'preservim/nerdcommenter'
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -60,9 +59,7 @@ require('packer').startup(function()
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
+        -- your configuration goes here
       }
     end
   }
@@ -83,14 +80,7 @@ require('packer').startup(function()
   --       use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   --    end
   --   )
-  
 end)
-
---[[local lsp_installer = require('williamboman/nvim-lsp-installer')]]
---[[lsp_installer.on_server_ready(function(server)]]
-        --[[local opts = {}]]
-        --[[server:setup(opts)]]
---[[end)]]
 
 require'cmp'.setup {
  sources = {
@@ -307,7 +297,6 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
-  -- cmd = { vim.fn.getenv 'HOME' .. '/.local/bin/sumneko_lua/bin/Linux/lua-language-server' },
   cmd = { vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server' },
   on_attach = on_attach,
   capabilities = capabilities,
