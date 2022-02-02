@@ -50,8 +50,9 @@ require('packer').startup(function()
   }
   use {
     'iamcco/markdown-preview.nvim',
-    ft = 'markdown',
-    run = 'cd app && yarn install'
+    -- ft = 'markdown',
+    run = 'cd app && yarn install',
+    -- cmd = ':mkdp#util#install()'
   }
 
   use {
