@@ -19,6 +19,8 @@ require('packer').startup(function()
 
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tomasiser/vim-code-dark'
+  use 'shaunsingh/nord.nvim'
+  use 'arcticicestudio/nord-vim'
   use 'preservim/nerdtree'
   use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
@@ -43,6 +45,8 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use { 'tami5/lspsaga.nvim' }  -- nightly
   -- use 'glepnir/lspsaga.nvim'
+  use 'ryanoasis/vim-devicons'
+  -- use 'kyazdani42/nvim-web-devicons'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
