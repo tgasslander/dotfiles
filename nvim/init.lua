@@ -44,7 +44,6 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use { 'tami5/lspsaga.nvim' }  -- nightly
-  -- use 'glepnir/lspsaga.nvim'
   use 'ryanoasis/vim-devicons'
   use {
     'nvim-lualine/lualine.nvim',
@@ -57,7 +56,6 @@ require('packer').startup(function()
     'iamcco/markdown-preview.nvim',
     -- ft = 'markdown',
     run = 'cd app && yarn install',
-    -- cmd = ':mkdp#util#install()'
   }
 
   use {
