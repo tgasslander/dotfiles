@@ -100,6 +100,12 @@ vim.cmd [[
 	let NERDTreeShowHidden=1
 ]]
 
+-- Enable yank to clipboard in iTerm
+vim.cmd [[
+    set clipboard+=unnamed
+]]
+
+
 --Set highlight on search
 vim.o.hlsearch = true
 
