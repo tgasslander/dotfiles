@@ -167,8 +167,8 @@ alias vv=nvim
 alias e=nvim
 alias gs='git status'
 alias glp='git log --pretty=oneline --graph'
-alias gib='git branch -v | tee'
-alias gab='git branch -vvv | tee'
+alias gib='git branch -v --color | tee'
+alias gab='git branch -vvv --color | tee'
 alias gd='git diff --color | tee'
 
 # gerrit
