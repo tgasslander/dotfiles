@@ -125,7 +125,7 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-# export GOPATH=/usr/local/go
+export GOINSTALL=/usr/local/go
 
 # OS-specific PATH additions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -136,7 +136,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOPATH/bin:$GOPLS_PATH:$LIMELIGHT_PATH
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOINSTALL/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
@@ -161,12 +161,12 @@ export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
 
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
-alias goplex="cd $HOME/Documents/projects/assignments/plexian/tech/code"
+alias gobtell="cd $HOME/Documents/projects/bt_migrate"
 alias gojo="cd $HOME/Documents/projects/jotojo"
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
-alias glp='git log --pretty=oneline --graph'
+alias glp="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | tee"
 alias gib='git branch -v --color | tee'
 alias gab='git branch -vvv --color | tee'
 alias gd='git diff --color | tee'
