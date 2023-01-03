@@ -125,7 +125,7 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-# export GOPATH=/usr/local/go
+export GOINSTALL=/usr/local/go
 
 # OS-specific PATH additions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -136,7 +136,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOPATH/bin:$GOPLS_PATH:$LIMELIGHT_PATH
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOINSTALL/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
