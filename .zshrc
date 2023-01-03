@@ -166,7 +166,7 @@ alias gojo="cd $HOME/Documents/projects/jotojo"
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
-alias glp='git log --pretty=oneline --graph'
+alias glp="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | tee"
 alias gib='git branch -v --color | tee'
 alias gab='git branch -vvv --color | tee'
 alias gd='git diff --color | tee'
