@@ -161,7 +161,7 @@ export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
 
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
-alias goplex="cd $HOME/Documents/projects/assignments/plexian/tech/code"
+alias gobtell="cd $HOME/Documents/projects/bt_migrate"
 alias gojo="cd $HOME/Documents/projects/jotojo"
 alias vv=nvim
 alias e=nvim
