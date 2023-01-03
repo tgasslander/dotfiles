@@ -44,10 +44,12 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use { 'tami5/lspsaga.nvim' }  -- nightly
-  use 'ryanoasis/vim-devicons'
+  -- use 'ryanoasis/vim-devicons'
+  use 'kyazdani42/nvim-web-devicons'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'ryanoasis/vim-devicons', opt = true },
+    -- requires = { 'ryanoasis/vim-devicons', opt = true },
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     options = {
         theme = 'vscode',
     }
@@ -60,7 +62,7 @@ require('packer').startup(function()
 
   use {
     "folke/trouble.nvim",
-    requires = { 'ryanoasis/vim-devicons' },
+    requires = { 'kyazdani42/nvim-web-devicons'},
     config = function()
       require("trouble").setup {
         -- your configuration goes here
