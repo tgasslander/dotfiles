@@ -73,13 +73,6 @@ require('packer').startup(function()
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'ray-x/go.nvim'
 
-  use {
-    "blackCauldron7/surround.nvim",
-    config = function()
-      require"surround".setup {mappings_style = "surround"}
-    end
-  }
-
   -- require("packer").startup(
   --    function(use)
   --       -- use "hrsh7th/nvim-cmp" --completion
