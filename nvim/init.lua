@@ -1,5 +1,5 @@
 --- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data').. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
@@ -9,7 +9,7 @@ end
 vim.cmd [[
   augroup Packer
     autocmd!
-    autocmd BufWritePost init.lua PackerCompile
+    autocmd BufWritePost init.lua | PackerCompile
   augroup end
 ]]
 
@@ -83,7 +83,7 @@ end)
 
 require'cmp'.setup {
  sources = {
- 	{ name = 'cmp_tabnine' },
+     { name = 'cmp_tabnine' },
  },
   use "hrsh7th/nvim-compe" --completion
 }
@@ -286,8 +286,9 @@ local on_attach = function(_, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enable the following language servers
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls'}
@@ -304,7 +305,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   cmd = { vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server' },
   on_attach = on_attach,
   capabilities = capabilities,
@@ -313,16 +314,15 @@ require('lspconfig').sumneko_lua.setup {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
-        -- Setup your lua path
         path = runtime_path,
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = {'vim'},
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
+        library = vim.api.nvim_get_runtime_file("", true),
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
@@ -331,6 +331,34 @@ require('lspconfig').sumneko_lua.setup {
     },
   },
 }
+
+-- require('lspconfig').sumneko_lua.setup {
+--   cmd = { vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server' },
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = runtime_path,
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = { 'vim' },
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file('', true),
+--       },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- }
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
