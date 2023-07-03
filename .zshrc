@@ -190,3 +190,4 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Python
 export PATH=$PATH:$HOME/.local/bin
+export PATH=${HOME}/gn:"$PATH"
