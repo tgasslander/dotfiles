@@ -164,6 +164,7 @@ alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
 alias gobtell="cd $HOME/Documents/projects/bt_migrate"
 alias gojo="cd $HOME/Documents/projects/jotojo"
 alias gokeeb="cd $HOME/Documents/projects/toga_split/wireless/togasplit_ble_fw/zmk"
+alias gozephyr="cd $HOME/Documents/lab/zephyr/zephyr"
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
