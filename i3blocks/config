@@ -1,3 +1,7 @@
+[togasplit]
+command=/home/toga/.config/i3blocks/togasplit.sh
+interval=10
+
 [ip]
 command=hostname -I | awk '{ print " " $1 }'
 interval=once
