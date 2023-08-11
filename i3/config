@@ -51,7 +51,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec dmenu_run -fn 'monospace-16' -i
@@ -206,7 +206,7 @@ mode "$system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+q mode "$system"
+bindsym $mod+Shift+q mode "$system"
 
 set $lang Us (0), SE (1)
 mode "$lang" {
