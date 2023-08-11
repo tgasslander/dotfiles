@@ -171,6 +171,7 @@ alias glp="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 alias gib='git branch -v --color | tee'
 alias gab='git branch -vvv --color | tee'
 alias gd='git diff --color | tee'
+alias emacs='emacs -nw'
 
 # gerrit
 alias gerritpush='git push origin HEAD:refs/for/master'
