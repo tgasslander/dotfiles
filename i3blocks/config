@@ -1,3 +1,7 @@
+[mx_master]
+command=/home/toga/.config/i3blocks/mx_master.sh
+interval=10
+
 [togasplit]
 command=/home/toga/.config/i3blocks/togasplit.sh
 interval=10
