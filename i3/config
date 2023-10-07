@@ -191,6 +191,7 @@ exec_always feh feh --bg-scale /home/toga/.local/share/wallpapers/4K\ No\ Logo\ 
 bindsym $mod+c exec firefox
 bindsym $mod+m exec ~/dotfiles/toga_screens_office.sh
 bindsym $mod+shift+m exec xrandr --fb 3840x2160
+bindsym $mod+b exec ~/dotfiles/thunderbolt.sh
 default_border pixel 0
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
