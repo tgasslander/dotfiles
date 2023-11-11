@@ -203,8 +203,12 @@ vim.api.nvim_set_keymap('n', '<C-g>', [[<cmd>lua require('telescope.builtin').li
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
-require('nvim-treesitter.configs').setup {
-  -- ensure_installed = {"c", "lua", "rust", "typescript"},
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"c", "lua", "rust", "typescript", "python", "go"},
+  ignore_install = {""},
+  sync_install = false,
+  modules = {},
+  auto_install = true,
   highlight = {
     enable = true, -- false will disable the whole extension
   },
