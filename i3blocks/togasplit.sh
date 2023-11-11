@@ -11,7 +11,7 @@ BAT=$(cat /sys/class/power_supply/BAT0/capacity)
 KEEB=
 # --> end "do not edit"
 
-NEEDLE='togasplit'
+NEEDLE='togasplit ble'
 BATT_PERC="Battery Percentage"
 
 DEVICES=$(bluetoothctl paired-devices | grep $NEEDLE)
@@ -19,23 +19,13 @@ if [ -z "$DEVICES" ]; then
 	# $NEEDLE is not paired
 	exit 0
 fi
-ADDR=$(echo $DEVICES | awk 'NR==1{print $2;exit}')
-IFS=$'\n' INFO=($(bluetoothctl info $ADDR))
 
-for i in $INFO; do
+ADDR=($(echo $DEVICES | cut -f2 -d' '))
 
-	CONN=$(grep "Connected" <<< "$i")
-	if [ ! -z $CONN ]; then
-		CONNECTED=$(awk '{print $2;exit}' <<< $CONN)
-	fi
-
-	BATT=$(grep $BATT_PERC <<<"$i")
-	if [ ! -z $BATT ]; then
-		BATTERY=$(awk '{print $4;exit}' <<< $BATT | sed 's/[()]//g')
-	fi
-done
-
-if [ "$CONNECTED" = "yes" ]; then
+info=`bluetoothctl info $uuid`
+if echo "$info" | grep -q "Connected: yes"; then
+	BATT=$(echo $info | grep $BATT_PERC)
+	BATTERY=$(awk '{print $4;exit}' <<< $BATT | sed 's/[()]//g')
 	echo $KEEB $NEEDLE $BATTERY"%"
 fi
 exit 0
