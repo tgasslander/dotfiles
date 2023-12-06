@@ -4,8 +4,6 @@
 # Make sure to edit this file with an editor
 # that can display font awesome
 
-BAT=$(cat /sys/class/power_supply/BAT0/capacity)
-
 # DO NOT edit these. They contain font awesome icons that
 # may not be rendered in some terminals (I'm looking at you xterm)
 MOUSE=

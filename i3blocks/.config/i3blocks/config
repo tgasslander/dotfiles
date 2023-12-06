@@ -1,9 +1,9 @@
 [mx_master]
-command=/home/toga/.config/i3blocks/mx_master.sh
+command=${HOME}/.config/i3blocks/mx_master.sh
 interval=10
 
 [togasplit]
-command=/home/toga/.config/i3blocks/togasplit.sh
+command=${HOME}/.config/i3blocks/togasplit.sh
 interval=10
 
 [ip]
@@ -16,11 +16,11 @@ command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " "
 interval=1
 
 [lang]
-command=/home/toga/.config/i3blocks/lang.sh
+command=${HOME}/.config/i3blocks/lang.sh
 interval=10
 
 [battery]
-command=/home/toga/.config/i3blocks/battery.sh
+command=${HOME}/.config/i3blocks/battery.sh
 interval=10
 
 [time]
