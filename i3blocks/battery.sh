@@ -43,8 +43,6 @@ COLOR_HALF="#FFFF99"
 COLOR_GOOD="#FFFFFF"
 COLOR_FULL="#FFFFFF"
 
-
-# BAT=$BAT
 if [ "$BAT" -ge 0 ] && [ "$BAT" -le $LE_WARN ]; then
   L1="$CHARGING $WARN $BAT" 
   L2=$L1
@@ -63,6 +61,10 @@ elif [ "$BAT" -ge $GE_GOOD ] &&  [ "$BAT" -le $LE_GOOD ]; then
   L3=$COLOR_GOOD
 elif [ "$BAT" -ge $GE_FULL ] &&  [ "$BAT" -le $LE_FULL ]; then
   L1="$CHARGING $FULL $BAT"
+  L2=$L1
+  L3=$COLOR_FULL
+elif [ "$BAT" -gt $GE_FULL ]; then
+  L1="$CHARGING $FULL 100"
   L2=$L1
   L3=$COLOR_FULL
 fi

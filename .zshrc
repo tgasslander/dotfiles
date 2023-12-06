@@ -125,7 +125,18 @@ bindkey '^R' history-incremental-search-backward
 HISTSIZE=10000
 SAVEHIST=10000
 
-export PATH=$PATH:$HOME/.local/bin:~/appimages:/usr/local/go/bin:$GOPATH/bin
+export GOINSTALL=/usr/local/go
+
+# OS-specific PATH additions
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	GOPLS_PATH=/home/toga/go/bin
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	GOPLS_PATH=/Users/toga/go/bin
+	LIMELIGHT_PATH=/usr/local/bin
+fi
+
+
+export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOINSTALL/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
@@ -147,17 +158,31 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export QMK_HOME='~/Documents/projects/toga_split/qmk_firmware'
-# export GOPATH='/home/toga/Documents/projects/go'
+
 
 alias plex="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_plexian -o IdentitiesOnly=yes'"
-alias goplex="cd /home/toga/Documents/projects/assignments/plexian/tech/code"
-alias gojo="cd /home/toga/Documents/projects/jotojo/lab/backend/"
+alias gobtell="cd $HOME/Documents/projects/bt_migrate"
+alias gojo="cd $HOME/Documents/projects/jotojo"
+alias gokeeb="cd $HOME/Documents/projects/toga_split/wireless/firmware"
+alias gozephyr="cd $HOME/Documents/lab/zephyr/zephyr"
+alias gog='cd ~/Documents/projects/assignments/gunnebo'
 alias vv=nvim
 alias e=nvim
 alias gs='git status'
-alias glp='git log --pretty=oneline --graph'
-alias gib='git branch -v | tee'
-alias gab='git branch -vvv | tee'
+alias glp="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | tee"
+alias gib='git branch -v --color | tee'
+alias gab='git branch -vvv --color | tee'
+alias gd='git diff --color | tee'
+alias emacs='emacs -nw'
+
+# gerrit
+alias gerritpush='git push origin HEAD:refs/for/master'
+
+# Java stuff
+DEV_TOOLS="/home/$USER/JavaInstall"
+JAVA_HOME="$DEV_TOOLS/JDK/jdk-11.0.13+8"
+export JAVA_HOME
+PATH="$JAVA_HOME/bin:$PATH"
 
 # React Native Development environment
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -165,3 +190,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Python
+export PATH=$PATH:$HOME/.local/bin
+export PATH=${HOME}/gn:"$PATH"
+export PATH=$PATH:${HOME}/.local/share/nvim/lsp_servers/clangd/clangd/bin/
