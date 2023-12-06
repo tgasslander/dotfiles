@@ -11,7 +11,11 @@ vim.api.nvim_set_keymap('n', '<Leader>ev', '<C-w><C-v><C-l>:e $MYVIMRC<CR>', { n
 vim.api.nvim_set_keymap('n', '<Leader>evr', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
 
 -- Toggle fold
-vim.api.nvim_set_keymap('', '<Leader>ff', 'zi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Leader>ff', 'zA', { noremap = true, silent = true })
+-- Open all folds
+vim.api.nvim_set_keymap('', '<Leader>FF', 'zR', { noremap = true, silent = true })
+-- Close all folds
+vim.api.nvim_set_keymap('', '<Leader>FD', 'zM', { noremap = true, silent = true })
 
 -- Split screen vertically
 vim.api.nvim_set_keymap('n', '<Leader>sv', ':vs<CR>', { noremap = true, silent = true })
