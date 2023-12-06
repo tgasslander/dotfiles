@@ -13,11 +13,11 @@ export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	# export ZSH="/home/toga/.oh-my-zsh"
 	export ZSH="${HOME}/.oh-my-zsh"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	# export ZSH="/Users/toga/.oh-my-zsh"
 	export ZSH="${HOME}/.oh-my-zsh"
+	export PATH=$PATH:/opt/homebrew/bin
+
 fi
 
 # Set name of the theme to load --- if set to "random", it will
