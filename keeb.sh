@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# Convenence script to quickly switch between SE and US layout
+
 if [ $# -eq 0 ]
 then
 	echo "No arguments! 'se' or 'us' accepted values"
