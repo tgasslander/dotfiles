@@ -437,3 +437,4 @@ vim.api.nvim_set_hl(0, "ErrorMsg", { ctermbg=0, bg='#F44747' })
 -- Match and highlight trailing whitespace
 vim.fn.matchadd('errorMsg', [[\s\+$]])
 
+vim.cmd [[ set colorcolumn=100 ]]
