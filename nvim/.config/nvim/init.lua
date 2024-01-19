@@ -26,6 +26,8 @@ require('packer').startup(function()
     use 'folke/tokyonight.nvim'
     use "rebelot/kanagawa.nvim"
     use 'ryanoasis/vim-devicons'
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     use 'preservim/nerdtree'
 
     -- use 'editorconfig/editorconfig-vim'
