@@ -307,7 +307,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', ':TroubleToggle<CR>', opts)
     vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>Trouble quickfix<CR>', opts)
     -- Format
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', ':Format<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', ':Format<CR>', opts)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
     vim.cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
 end
