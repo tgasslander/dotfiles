@@ -93,6 +93,7 @@ require('packer').startup(function()
 
     use 'jose-elias-alvarez/nvim-lsp-ts-utils'
     use 'ray-x/go.nvim'
+    require('go').setup()
 
     -- require("packer").startup(
     --    function(use)
