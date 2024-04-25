@@ -131,9 +131,9 @@ export GOINSTALL=/usr/local/go
 
 # OS-specific PATH additions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	GOPLS_PATH=/home/toga/go/bin
+	GOPLS_PATH=/home/${USER}/go/bin
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	GOPLS_PATH=/Users/toga/go/bin
+	GOPLS_PATH=/Users/${USER}/go/bin
 	LIMELIGHT_PATH=/usr/local/bin
 fi
 
