@@ -197,3 +197,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.local/bin
 export PATH=${HOME}/gn:"$PATH"
 export PATH=$PATH:${HOME}/.local/share/nvim/lsp_servers/clangd/clangd/bin/
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
