@@ -328,6 +328,8 @@ for _, lsp in ipairs(servers) do
     }
 end
 
+require('go').setup()
+
 -- Example custom server
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
