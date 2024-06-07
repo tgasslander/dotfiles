@@ -96,6 +96,12 @@ require('packer').startup(function()
     require('go').setup()
 
     use {'github/copilot.vim', branch = 'release' }
+    vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+          expr = true,
+          replace_keycodes = false
+        })
+    vim.g.copilot_no_tab_map = true
+
     -- require("packer").startup(
     --    function(use)
     --       -- use "hrsh7th/nvim-cmp" --completion
