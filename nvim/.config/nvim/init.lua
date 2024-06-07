@@ -95,6 +95,7 @@ require('packer').startup(function()
     use 'ray-x/go.nvim'
     require('go').setup()
 
+    use {'github/copilot.vim', branch = 'release' }
     -- require("packer").startup(
     --    function(use)
     --       -- use "hrsh7th/nvim-cmp" --completion
