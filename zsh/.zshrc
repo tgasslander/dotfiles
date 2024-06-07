@@ -193,10 +193,12 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# Python
 export PATH=$PATH:$HOME/.local/bin
 export PATH=${HOME}/gn:"$PATH"
 export PATH=$PATH:${HOME}/.local/share/nvim/lsp_servers/clangd/clangd/bin/
+# Python
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
