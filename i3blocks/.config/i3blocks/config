@@ -2,8 +2,8 @@
 command=${HOME}/.config/i3blocks/mx_master.sh
 interval=10
 
-[togasplit]
-command=${HOME}/.config/i3blocks/togasplit.sh
+[coderkeeb]
+command=${HOME}/.config/i3blocks/coderkeeb.sh
 interval=10
 
 [ip]
