@@ -188,7 +188,7 @@ workspace 1 output DP-3
 workspace 2 output primary
 workspace 3 output primary
 exec_always feh feh --bg-scale /home/toga/.local/share/wallpapers/4K\ No\ Logo\ PL\ 1824.png --bg-scale /home/toga/Pictures/Nature\ Nature\ 029\ 4K.png
-bindsym $mod+c exec firefox
+bindsym $mod+c exec google-chrome
 bindsym $mod+m exec .config/i3/scripts/toga_screens_office.sh
 bindsym $mod+shift+m exec xrandr --fb 3840x2160
 bindsym $mod+b exec .config/i3/scripts/thunderbolt.sh
