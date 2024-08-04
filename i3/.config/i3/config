@@ -220,4 +220,4 @@ mode "$lang" {
 }
 bindsym $mod+i mode "$lang"
 #border color
-client.focused #555555 #555555 #ffffff #2e9ef4     #00FF00
+client.focused #555555 #555555 #ffffff #2e9ef4     #ef9f76
