@@ -1,2 +1,2 @@
-require("toga.core")
 require("toga.lazy")
+require("toga.core")
