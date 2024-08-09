@@ -1,3 +1,7 @@
+color=#babbf1
+align=center
+separator_block_width=30
+
 [mx_master]
 command=${HOME}/.config/i3blocks/mx_master.sh
 interval=10
@@ -9,7 +13,6 @@ interval=10
 [ip]
 command=hostname -I | awk '{ print " " $1 }'
 interval=once
-# color=#91E78B
 
 [cpu]
 command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12 "%"}'a
