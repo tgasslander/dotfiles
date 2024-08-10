@@ -11,6 +11,8 @@ fi
 #toga
 export TERM="xterm-256color"
 
+PATH=$PATH:$HOME/.local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	export ZSH="${HOME}/.oh-my-zsh"
@@ -138,7 +140,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 
-export PATH=$PATH:~/.emacs.d/bin:$HOME/.local/bin:~/appimages:$GOINSTALL/bin:$GOPLS_PATH:$LIMELIGHT_PATH
+export PATH=$PATH:~/.emacs.d/bin:~/appimages:$GOINSTALL/bin:$GOPLS_PATH:$LIMELIGHT_PATH
 
 if command -v emacslient >/dev/null 2>&1; then
 SERVICE="emacs"
