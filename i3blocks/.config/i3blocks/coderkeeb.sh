@@ -9,7 +9,7 @@
 KEEB=
 # --> end "do not edit"
 
-NEEDLE='togasplit ble'
+NEEDLE='Split One'
 BATT_PERC="Battery Percentage"
 
 DEVICES=$(bluetoothctl paired-devices | grep $NEEDLE)
