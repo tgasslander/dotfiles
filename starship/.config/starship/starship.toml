@@ -1,0 +1,30 @@
+# ~/.config/starship.toml
+
+[git_branch]
+# Default style for git branch when in an unmodified state
+style = "bold green"
+
+# Use the 'when' condition to change the background based on the git status
+
+# When there are modifications
+[git_branch.format]
+value = """
+# This checks if the git status has any of these modifications
+"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" != "" && 
+"\($branch_name\)" || "$branch_name"
+"""
+
+[[git_branch.when]]
+# If there are modifications, change the style to yellow background and black text
+condition = """\
+"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" != ""
+"""
+style = "bold black on yellow"
+
+[[git_branch.when]]
+# If there are no modifications, keep the default green style
+condition = """\
+"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" == ""
+"""
+style = "bold green"
+
