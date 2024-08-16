@@ -1,61 +1,20 @@
-# format = """\
-# [](bg:#00000000 fg:#8caaee)\
-# $directory\
-# [](fg:#8caaee bg:#e5c890)\
-# $git_branch\
-# $git_status\
-# $git_state\
-# ${custom.git}\
-# $git_metrics\
-# [](fg:#e5c890 bg:#00000000)\
-# $character\
-# """
-#
-format = "$env_var$username${custom.username_root}$hostname \\[ [$directory](white)${custom.git} \\] $status "
+format = """\
+$env_var$username${custom.username_root}$hostname\
+[](bg:#00000000 fg:#8caaee)\
+[${directory} ](bg:#8caaee fg:#ffffff)\
+${custom.git} \
+"""
 
 [directory]
-format = "[ \uf114 $path ]($style)"
-style = "fg:#E4E4E4 bg:#8caaee"
+format = "\uf114 $path($style)"
+style = "fg:#c6d0f5 bg:#8caaee"
 
 [git_branch]
 format = '[ $symbol$branch(:$remote_branch) ]($style)'
-symbol = "  "
+symbol = " "
 style = "fg:#1C3A5E bg:#e5c890"
-# style = "bold green"
 
 [custom.git]
 command = "~/.config/starship/custom.git.sh || true"
-# command = "${STARSHIP_CONFIG}/custom.git.sh || true"
 when = "true"
 format = "$output"
-
-
-[git_status]
-format = '[$all_status]($style)'
-style = "fg:#1C3A5E bg:#e5c890"
-disabled = false
-
-# style = "bold green"
-
-# [[git_status.modified]]
-# style = "bold yellow"
-# git_branch.style = '$style'
-
-
-[git_metrics]
-format = "([+$added]($added_style))[]($added_style)"
-added_style = "fg:#1C3A5E bg:#e5c890"
-deleted_style = "fg:bright-red bg:235"
-disabled = false
-
-[hg_branch]
-format = "[ $symbol$branch ]($style)"
-symbol = " "
-
-[cmd_duration]
-format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
-
-[character]
-success_symbol = '[ ➜](bold green) '
-error_symbol = '[ ✗](#e78284) '
