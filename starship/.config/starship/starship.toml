@@ -1,30 +1,61 @@
-# ~/.config/starship.toml
+# format = """\
+# [](bg:#00000000 fg:#8caaee)\
+# $directory\
+# [](fg:#8caaee bg:#e5c890)\
+# $git_branch\
+# $git_status\
+# $git_state\
+# ${custom.git}\
+# $git_metrics\
+# [](fg:#e5c890 bg:#00000000)\
+# $character\
+# """
+#
+format = "$env_var$username${custom.username_root}$hostname \\[ [$directory](white)${custom.git} \\] $status "
+
+[directory]
+format = "[ \uf114 $path ]($style)"
+style = "fg:#E4E4E4 bg:#8caaee"
 
 [git_branch]
-# Default style for git branch when in an unmodified state
-style = "bold green"
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#1C3A5E bg:#e5c890"
+# style = "bold green"
 
-# Use the 'when' condition to change the background based on the git status
+[custom.git]
+command = "~/.config/starship/custom.git.sh || true"
+# command = "${STARSHIP_CONFIG}/custom.git.sh || true"
+when = "true"
+format = "$output"
 
-# When there are modifications
-[git_branch.format]
-value = """
-# This checks if the git status has any of these modifications
-"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" != "" && 
-"\($branch_name\)" || "$branch_name"
-"""
 
-[[git_branch.when]]
-# If there are modifications, change the style to yellow background and black text
-condition = """\
-"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" != ""
-"""
-style = "bold black on yellow"
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#1C3A5E bg:#e5c890"
+disabled = false
 
-[[git_branch.when]]
-# If there are no modifications, keep the default green style
-condition = """\
-"$(git_status.untracked_count)$(git_status.modified_count)$(git_status.staged_count)$(git_status.conflicted_count)$(git_status.unstaged_count)$(git_status.ahead_count)$(git_status.behind_count)$(git_status.diverged_count)" == ""
-"""
-style = "bold green"
+# style = "bold green"
 
+# [[git_status.modified]]
+# style = "bold yellow"
+# git_branch.style = '$style'
+
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#e5c890"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"
+
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](#e78284) '
