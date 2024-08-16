@@ -1,5 +1,5 @@
 return {
-    "Mofiqul/vscode.nvim",
+    "catppuccin/nvim",
     priority = 1000,
     config = function()
         local transparent = false -- set to true if you would like to enable transparency
@@ -14,8 +14,8 @@ return {
         local fg_gutter = "#627E97"
         local border = "#547998"
 
-        require("vscode").setup({
-            -- style = "night",
+        require("catppuccin").setup({
+            flavour = "macchiato",
             transparent = transparent,
             styles = {
                 sidebars = transparent and "transparent" or "dark",
@@ -40,6 +40,6 @@ return {
             end,
         })
 
-        vim.cmd("colorscheme vscode")
+        vim.cmd("colorscheme catppuccin")
     end,
 }
