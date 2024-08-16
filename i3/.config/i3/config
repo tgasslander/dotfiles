@@ -9,9 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class="^.*"] border pixel 1
-gaps inner 15
-gaps outer 15
+# for_window [class="^.*"] border pixel 1
+gaps inner 12
+gaps outer 2
 
 set $mod Mod4
 
@@ -29,6 +29,7 @@ font pango:monospace 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always --no-startup-id picom
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -227,7 +228,7 @@ bindsym $mod+c exec google-chrome
 bindsym $mod+m exec .config/i3/scripts/toga_screens_office.sh
 bindsym $mod+shift+m exec xrandr --fb 3840x2160
 bindsym $mod+n exec .config/i3/scripts/thunderbolt.sh
-default_border pixel 1
+default_border pixel 0
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$system" {
@@ -255,4 +256,4 @@ mode "$lang" {
 }
 bindsym $mod+i mode "$lang"
 #border color
-client.focused #555555 #555555 #ffffff #2e9ef4     #ef9f76
+# client.focused #555555 #555555 #ffffff #2e9ef4     #ef9f76
