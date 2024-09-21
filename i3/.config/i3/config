@@ -183,6 +183,8 @@ set $color_non_focused_background #232634
 set $color_urgent_foreground #e78284
 set $color_active_background #51576d
 
+for_window [class="Gnome-calculator"] floating enable
+
 bar {
 	output DP-1.1
 	output HDMI-0
