@@ -55,5 +55,22 @@ return {
                 "eslint_d",
             },
         })
+        require("lspconfig").clangd.setup({
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--compile-commands-dir=./build",
+                "--clang-tidy",
+                "--header-insertion=never",
+            },
+            -- Optional settings
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+            root_dir = require("lspconfig.util").root_pattern(
+                "compile_commands.json",
+                "compile_flags.txt",
+                "configure.ac",
+                ".git"
+            ),
+        })
     end,
 }
