@@ -2,6 +2,10 @@ color=#babbf1
 align=center
 separator_block_width=30
 
+[spotify]
+command=${HOME}/.config/i3blocks/spotify.sh
+interval=10
+
 [mx_master]
 command=${HOME}/.config/i3blocks/mx_master.sh
 interval=10
