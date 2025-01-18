@@ -27,5 +27,5 @@ command=${HOME}/.config/i3blocks/battery.sh
 interval=10
 
 [time]
-command=printf " " && date '+%Y-%m-%d %H:%M'
+command=printf " " && date '+%d %b %H:%M'
 interval=5
