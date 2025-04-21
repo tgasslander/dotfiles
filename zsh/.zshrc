@@ -90,6 +90,12 @@ alias emacs='emacs -nw'
 # gerrit
 alias gerritpush='git push origin HEAD:refs/for/master'
 
+# talos
+alias t=talosctl
+
+# kubernetes
+alias k=kubectl
+
 # Java stuff
 DEV_TOOLS="/home/$USER/JavaInstall"
 JAVA_HOME="$DEV_TOOLS/JDK/jdk-11.0.13+8"
