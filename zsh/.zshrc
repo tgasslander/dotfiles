@@ -118,3 +118,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/toga/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
