@@ -68,3 +68,11 @@ vim.api.nvim_set_keymap(
     ":MarkdownPreviewToggle<CR>",
     { noremap = true, silent = true, desc = "Toggle markdown preview" }
 )
+
+-- SwaggerPreview settings
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>sw",
+    ":SwaggerPreviewToggle<CR>",
+    { noremap = true, silent = true, desc = "Toggle Swagger preview" }
+)
