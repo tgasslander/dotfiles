@@ -16,6 +16,12 @@ config.keys = {
 		mods = "CMD|SHIFT",
 		action = wezterm.action.ReloadConfiguration,
 	},
+	-- CTRL+K to send string 'clear\n'
+	{
+		key = "k",
+		mods = "CTRL",
+		action = wezterm.action.SendString("clear\n"),
+	},
 }
 
 return config
