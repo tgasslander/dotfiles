@@ -55,7 +55,8 @@ return {
                 "eslint_d",
             },
         })
-        require("lspconfig").clangd.setup({
+
+        vim.lsp.config("clangd", {
             cmd = {
                 "clangd",
                 "--background-index",
