@@ -248,14 +248,6 @@ mode "$system" {
 }
 bindsym $mod+Shift+q mode "$system"
 
-# set $lang Us (0), SE (1)
-# mode "$lang" {
-#
-#     # back to normal: Enter or Escape
-#     bindsym Return mode "default"
-#     bindsym Escape mode "default"
-# }
-# bindsym $mod+i mode "$lang"
 bindsym $mod+i exec .config/i3/scripts/toggle_keyboard_layout.sh
 #border color
 # client.focused #555555 #555555 #ffffff #2e9ef4     #ef9f76
