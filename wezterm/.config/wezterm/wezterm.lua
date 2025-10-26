@@ -8,6 +8,7 @@ config.window_close_confirmation = "NeverPrompt" -- Exit without confirmation
 config.window_decorations = "RESIZE" -- Remove ugly decorations
 config.initial_rows = 64 -- Default rows
 config.initial_cols = 240 -- Default cols
+config.font = wezterm.font("Hack")
 
 -- Avoid clashing with i3 (CMD|SHIFT+R to reload the i3 config)
 config.keys = {
