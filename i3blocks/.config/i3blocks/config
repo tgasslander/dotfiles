@@ -15,8 +15,8 @@ command=${HOME}/.config/i3blocks/coderkeeb.sh
 interval=10
 
 [ip]
-command=hostname -I | awk '{ print " " $1 }'
-interval=once
+command=${HOME}/.config/i3blocks/wireguard.sh
+interval=10
 
 [cpu]
 command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12 "%"}'a
