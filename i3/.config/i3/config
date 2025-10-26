@@ -249,5 +249,3 @@ mode "$system" {
 bindsym $mod+Shift+q mode "$system"
 
 bindsym $mod+i exec .config/i3/scripts/toggle_keyboard_layout.sh
-#border color
-# client.focused #555555 #555555 #ffffff #2e9ef4     #ef9f76
