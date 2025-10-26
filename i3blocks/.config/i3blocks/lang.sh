@@ -8,14 +8,14 @@ ICON=
 CURR_LANG="$(setxkbmap -print | grep xkb_symbols | awk '{print $4}' | awk -F"+" '{print $2}')"
 US="us"
 SE="se"
-LANG=" "
+LANG="TBD"
 
 if [ $CURR_LANG == $SE ]
 then
-	echo $ICON "SE" ""
+	echo "$ICON SE"
 elif [ $CURR_LANG == $US ]
 then
-	echo $ICON "US" ""
+	echo "$ICON US"
 else
 	$LANG="TBD"
 fi
