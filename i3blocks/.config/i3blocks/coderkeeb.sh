@@ -37,7 +37,7 @@ while IFS= read -r device; do
 
             # Append to result with separator if not first entry
             if [ -n "$RESULT" ]; then
-                RESULT="$RESULT  $keyboard_status"
+                RESULT="$RESULT $keyboard_status"
             else
                 RESULT="$keyboard_status"
             fi
