@@ -30,7 +30,7 @@ while IFS= read -r device; do
             keyboard_status="$NAME"
             if echo "$info" | grep -q "$BATT_PERC"; then
                 BATTERY=$(echo "$info" | grep "$BATT_PERC" | awk '{print $4;exit}' | sed 's/[()]//g')
-		keyboard_status="$keyboard_status ($BATTERY%)"
+		keyboard_status="$keyboard_status $BATTERY%"
             else
                 keyboard_status="$keyboard_status N/A%"
             fi

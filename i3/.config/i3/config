@@ -193,7 +193,7 @@ bar {
 	output DP-1.1
 	output HDMI-0
 	output primary
-	font pango:DejaVu 16
+	font pango:DejaVu, FontAwesome 16
 	colors {
 		background $color_background
 		separator #666666

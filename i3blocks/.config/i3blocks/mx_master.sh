@@ -6,7 +6,10 @@
 
 # DO NOT edit these. They contain font awesome icons that
 # may not be rendered in some terminals (I'm looking at you xterm)
-MOUSE=
+# MOUSE=
+# MOUSE=
+MOUSE="\uf124"
+
 # --> end "do not edit"
 
 NEEDLE='MX Master'
