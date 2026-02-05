@@ -56,22 +56,27 @@ return {
             },
         })
 
-        vim.lsp.config("clangd", {
-            cmd = {
-                "clangd",
-                "--background-index",
-                "--compile-commands-dir=./build",
-                "--clang-tidy",
-                "--header-insertion=never",
-            },
-            -- Optional settings
+        vim.lsp.config.clangd = {
+            cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=never" },
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-            root_dir = require("lspconfig.util").root_pattern(
+            root_markers = {
+                ".clangd",
+                ".clang-tidy",
+                ".clang-format",
                 "compile_commands.json",
                 "compile_flags.txt",
                 "configure.ac",
-                ".git"
-            ),
-        })
+                ".git",
+            },
+            capabilities = {
+                offsetEncoding = { "utf-8", "utf-16" },
+                textDocument = {
+                    completion = {
+                        editsNearCursor = true,
+                    },
+                },
+            },
+        }
+        vim.lsp.enable("clangd")
     end,
 }
