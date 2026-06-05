@@ -30,7 +30,7 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id picom
-
+exec --no-startup-id xss-lock --transfer-sleep-lock -- sh -c 'i3lock --nofork; ~/config/i3/scripts/kick_hdmi.sh'
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -229,6 +229,9 @@ workspace 3 output primary
 # screw thunderbolt for this setup
 exec_always --no-startup-id xrandr --output DP-1.1 --off
 exec_always --no-startup-id xrandr --output DP-1.2 --off
+
+# attempt to kick the HDMI monitor
+exec --no-startup-id ~/.config/i3/dpms-hdmi-fix.sh
 
 exec_always feh feh --bg-scale /home/toga/.local/share/wallpapers/4K\ No\ Logo\ PL\ 1824.png --bg-scale /home/toga/Pictures/Nature\ Nature\ 029\ 4K.png
 bindsym $mod+c exec google-chrome
