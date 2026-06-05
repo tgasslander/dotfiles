@@ -20,12 +20,18 @@ return {
                 liquid = { "prettier" },
                 lua = { "stylua" },
                 python = { "isort", "black" },
+                -- c = { "clang-format" },
             },
             format_on_save = function(bufnr)
                 -- Disable formatting for Go files since go.nvim handles it
                 if vim.bo[bufnr].filetype == "go" then
                     return
                 end
+
+                if vim.bo[bufnr].filetype == "c" then
+                    return
+                end
+
                 return {
                     lsp_fallback = true,
                     async = false,
