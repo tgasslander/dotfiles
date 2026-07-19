@@ -99,6 +99,9 @@ alias k=kubectl
 # Tmux
 alias dev="tmux-dev-session.sh"
 
+# Docker
+alias docker-nuke="docker system prune -af --volumes"
+
 # React Native Development environment
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
