@@ -43,7 +43,7 @@ bindsym XF86AudioPrev exec --no-startup-id "dbus-send --print-reply --dest=org.m
 
 floating_modifier $mod
 
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec wezterm
 
 bindsym $mod+q kill
 
