@@ -22,7 +22,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 fi
 
-plugins=(git docker)
+plugins=(git docker zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
