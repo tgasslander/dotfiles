@@ -178,8 +178,8 @@ bar {
 # only existed on a previous machine.
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-bindsym $mod+c exec google-chrome --ozone-platform-hint=auto
-default_border pixel 2
+bindsym $mod+c exec google-chrome-stable --ozone-platform-hint=auto
+default_border pixel 4
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$system" {
