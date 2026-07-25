@@ -191,12 +191,10 @@ workspace 3 output primary
 exec_always swaymsg output DP-1.1 disable
 exec_always swaymsg output DP-1.2 disable
 
-# VERIFY: feh originally assigned the first --bg-scale image to the first
-# RandR output and the second to the second, in xrandr detection order.
-# This assumes the first wallpaper is the general/default one and the
-# second belongs specifically to DP-3 — swap/adjust if that's backwards.
-output * bg /home/toga/.local/share/wallpapers/4K\ No\ Logo\ PL\ 1824.png fill
-output DP-3 bg /home/toga/Pictures/Nature\ Nature\ 029\ 4K.png fill
+# Standard Sway default wallpaper (shipped by the sway package itself),
+# used on all outputs — avoids depending on user-specific image files that
+# only existed on a previous machine.
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 bindsym $mod+c exec google-chrome
 default_border pixel 0
