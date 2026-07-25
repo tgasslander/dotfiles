@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    swaylock -f -i ${HOME}/.config/sway/lockscreen.png
+    swaylock -f -i "${HOME}/.config/sway/lockscreen.png"
 }
 
 case "$1" in
