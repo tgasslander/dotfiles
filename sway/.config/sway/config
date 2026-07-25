@@ -178,7 +178,9 @@ bar {
 # only existed on a previous machine.
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-bindsym $mod+c exec google-chrome-stable --ozone-platform-hint=auto
+# --ozone-platform-hint=auto dropped: it re-enables native Wayland, which
+# crashes on wlroots 0.20.2 (see ~/.config/chrome-flags.conf for the real fix)
+bindsym $mod+c exec google-chrome-stable
 default_border pixel 4
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown

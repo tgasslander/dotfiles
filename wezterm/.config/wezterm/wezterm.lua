@@ -2,6 +2,11 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+-- Native Wayland crashes on wl_shm dispatch under sway's wlroots 0.20.2 +
+-- wayland 1.25.0 (works fine under Plasma/kwin). Force XWayland until
+-- upstream fixes the regression.
+config.enable_wayland = false
+
 config.color_scheme = "catppuccin-frappe"
 config.enable_tab_bar = false -- We don't do tabs because we have tmux, tiling wm, etc.
 config.window_close_confirmation = "NeverPrompt" -- Exit without confirmation
