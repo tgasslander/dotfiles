@@ -19,7 +19,7 @@ command=${HOME}/.config/i3blocks/wireguard.sh
 interval=10
 
 [cpu]
-command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12 "%"}'a
+command=printf " " && mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12 "%"}'
 interval=1
 
 [lang]

@@ -4,10 +4,10 @@
 # See docs/superpowers/specs/2026-07-25-sway-i3-replacement-design.md in the
 # env-install repo for the full rationale.
 #
-# VERIFY: output names below (DP-1.1, HDMI-0, DP-3, DP-1.2) are carried over
-# from the X11 RandR names in the old i3 config. Wlroots may enumerate them
-# differently — run `swaymsg -t get_outputs` after first login and fix any
-# output name below that doesn't match.
+# The bar has no hardcoded `output` line, so it shows on every connected
+# output automatically — avoids hardcoding X11 RandR output names
+# (DP-1.1, HDMI-0, DP-3, ...) that don't match wlroots' own naming and
+# would need re-fixing every time the monitor setup changes.
 
 gaps inner 12
 gaps outer 2
@@ -39,7 +39,7 @@ bindsym XF86AudioPrev exec --no-startup-id "dbus-send --print-reply --dest=org.m
 
 floating_modifier $mod
 
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec alacritty
 
 bindsym $mod+q kill
 
@@ -80,7 +80,7 @@ bindsym $mod+Shift+t focus mode_toggle
 
 bindsym $mod+a focus parent
 
-bindsym $mod+w exec i3-sensible-terminal -e "sudo ${HOME}/.config/sway/scripts/wg_toggle.sh"
+bindsym $mod+w exec alacritty -e sudo ${HOME}/.config/sway/scripts/wg_toggle.sh
 
 set $ws1 "1"
 set $ws2 "2"
@@ -149,27 +149,8 @@ set $color_active_background #51576d
 for_window [class="Gnome-calculator"] floating enable
 
 bar {
-	output DP-1.1
-	output HDMI-0
-	output primary
-	font pango:DejaVu 16
-	tray_output primary
-	colors {
-		background $color_background
-		separator #666666
-		focused_workspace $color_background $color_highlight $color_highlight_foreground
-		active_workspace $color_active_background $color_active_background $color_highlight_foreground
-		inactive_workspace $color_background $color_non_focused_background $color_non_focused_foreground
-		urgent_workspace $color_background $color_urgent_foreground #ffffff
-	}
-	status_command i3blocks
-	position top
-}
-
-bar {
-	output DP-3
 	font pango:DejaVu 24
-	tray_output DP-3
+	tray_output *
 	colors {
 		background $color_background
 		separator #666666
@@ -181,15 +162,6 @@ bar {
 	status_command i3blocks
 	position top
 }
-
-# toga - workspaces in multimonitor mode
-workspace 1 output DP-3
-workspace 2 output primary
-workspace 3 output primary
-
-# screw thunderbolt for this setup
-exec_always swaymsg output DP-1.1 disable
-exec_always swaymsg output DP-1.2 disable
 
 # Standard Sway default wallpaper (shipped by the sway package itself),
 # used on all outputs — avoids depending on user-specific image files that
