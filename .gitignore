@@ -4,3 +4,8 @@
 **/*/node_modules/**
 **/*/yarn-error.log
 **/*/yarn.lock
+
+# uv's installer drops ~55MB of prebuilt binaries into the stowed scripts
+# package; install uv via env-install instead of committing them.
+scripts/.local/bin/uv
+scripts/.local/bin/uvx
