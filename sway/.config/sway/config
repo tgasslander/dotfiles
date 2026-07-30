@@ -9,7 +9,7 @@
 # (DP-1.1, HDMI-0, DP-3, ...) that don't match wlroots' own naming and
 # would need re-fixing every time the monitor setup changes.
 
-gaps inner 12
+gaps inner 10
 gaps outer 2
 
 set $mod Mod4
@@ -168,7 +168,7 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 
 bar {
-	font pango:DejaVu 24
+	font pango:DejaVu 14
 	tray_output *
 	colors {
 		background $color_background
