@@ -21,7 +21,16 @@ font pango:monospace 8
 # --transfer-sleep-lock (suspend-only); the second one also chained a
 # kick_hdmi.sh HDMI-wake hack, which is dropped here (machine-specific,
 # not ported — see Global Constraints).
+#
+# The `timeout 60` blanks the outputs a minute after the last input, but only
+# while swaylock is up — the pgrep guard is what makes this "1 min into the
+# lockscreen" rather than a general 1 min screen blank, so an unlocked session
+# left sitting there keeps its display. Guarding on the swaylock process (vs.
+# hooking the lock path itself) means every way in gets it: the $mod+Shift+q
+# lock binding, and the before-sleep lock below.
 exec swayidle -w \
+	timeout 60 'pgrep -x swaylock >/dev/null && swaymsg "output * power off"' \
+		resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f -i ~/.config/sway/lockscreen.png'
 
 # NetworkManager tray icon. Sway's bar has native tray support (unlike
