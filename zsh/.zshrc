@@ -128,3 +128,6 @@ compinit
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
 fi
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
