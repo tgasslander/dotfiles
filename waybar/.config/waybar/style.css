@@ -1,0 +1,71 @@
+/* Catppuccin Frappe, matching the palette in the Sway config. */
+@define-color bg          rgba(35, 38, 52, 0.75);
+@define-color fg          #babbf1;
+@define-color accent      #a6d189;
+@define-color highlight   #8caaee;
+@define-color urgent      #e78284;
+@define-color active_bg   #51576d;
+
+* {
+	font-family: "Hack Nerd Font", monospace;
+	font-size: 14px;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+}
+
+window#waybar {
+	background: transparent;
+	color: @fg;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	background: @bg;
+	border-radius: 12px;
+	margin: 6px 8px;
+	padding: 0 10px;
+}
+
+#workspaces button {
+	color: @fg;
+	padding: 0 8px;
+	border-radius: 8px;
+}
+
+#workspaces button.active {
+	background: @highlight;
+	color: #ffffff;
+}
+
+#workspaces button.urgent {
+	background: @urgent;
+	color: #ffffff;
+}
+
+#window {
+	color: @fg;
+	padding: 0 8px;
+}
+
+#mpris,
+#custom-mx_master,
+#custom-coderkeeb,
+#custom-wireguard,
+#cpu,
+#language,
+#battery,
+#clock,
+#tray {
+	padding: 0 10px;
+	color: @fg;
+}
+
+#battery.warning {
+	color: #ff9000;
+}
+
+#battery.critical {
+	color: @urgent;
+}
