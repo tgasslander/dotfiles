@@ -190,7 +190,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Chrome's ozone platform is picked per session by the wrapper — see
 # ~/.local/bin/chrome-session-launch. Under Sway that means XWayland, which
 # works around the wl_shm abort on wlroots 0.20.2.
-bindsym $mod+c exec chrome-session-launch
+# Absolute path: ~/.local/bin is not on the display manager's session PATH,
+# so a bare name here resolves to nothing and the binding silently does
+# nothing. Confirmed under Hyprland; the same session PATH applies here.
+bindsym $mod+c exec $HOME/.local/bin/chrome-session-launch
 default_border pixel 4
 
 set $system system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
