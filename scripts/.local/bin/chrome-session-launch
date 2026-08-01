@@ -1,0 +1,23 @@
+#!/bin/sh
+# Chrome's ozone platform is chosen per session, not in chrome-flags.conf.
+# That file is read by /usr/bin/google-chrome-stable with
+# `grep -v '^#' "$XDG_CONFIG_HOME/chrome-flags.conf"` — flat text, no shell
+# evaluation — so it cannot express a conditional.
+#
+# Sway: wayland 1.25.0 + wlroots0.20 0.20.2 abort native-Wayland Chrome on
+# wl_shm dispatch (see the 2026-07-26 amendment in the sway spec), so that
+# session forces XWayland.
+#
+# Hyprland: renders through aquamarine, not wlroots, so the implicated code
+# path is not in play and Chrome runs native Wayland with no flags at all.
+# This is deliberate — Chrome is the primary suspect in an open lag-spike
+# investigation (UPDATES.md) and must not carry an X11 workaround that
+# confounds it.
+#
+# Debian/i3 on X11: no WAYLAND_DISPLAY, so Chrome's own ozone auto-detection
+# picks X11. The no-flag path is correct there too.
+if [ -n "${SWAYSOCK:-}" ]; then
+	exec google-chrome-stable --ozone-platform=x11 "$@"
+fi
+
+exec google-chrome-stable "$@"
