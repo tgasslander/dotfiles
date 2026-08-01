@@ -1,7 +1,6 @@
 /* Catppuccin Frappe, matching the palette in the Sway config. */
 @define-color bg          rgba(35, 38, 52, 0.75);
 @define-color fg          #babbf1;
-@define-color accent      #a6d189;
 @define-color highlight   #8caaee;
 @define-color urgent      #e78284;
 @define-color active_bg   #51576d;
@@ -32,6 +31,14 @@ window#waybar {
 	color: @fg;
 	padding: 0 8px;
 	border-radius: 8px;
+}
+
+/* Sway's bar styled `active_workspace`: a workspace that is visible on
+   another output but not focused. Waybar's equivalent is `.visible`. This
+   must come before `.active` — both classes apply to the focused workspace
+   at once, and `.active` has to win. */
+#workspaces button.visible {
+	background: @active_bg;
 }
 
 #workspaces button.active {
