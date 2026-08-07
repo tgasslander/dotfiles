@@ -4,33 +4,34 @@
 @define-color highlight   #8caaee;
 @define-color urgent      #e78284;
 @define-color active_bg   #51576d;
+@define-color module_bg	  #414559;
 
 * {
-	font-family: "Hack Nerd Font", monospace;
-	font-size: 14px;
-	border: none;
-	border-radius: 0;
-	min-height: 0;
+  font-family: "Hack Nerd Font", monospace;
+  font-size: 24px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
 }
 
 window#waybar {
-	background: transparent;
-	color: @fg;
+  background: transparent;
+  color: @fg;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
-	background: @bg;
-	border-radius: 12px;
-	margin: 6px 8px;
-	padding: 0 10px;
+  background: @bg;
+  border-radius: 8px;
+  margin: 6px 8px;
+  padding: 0 20px;
 }
 
 #workspaces button {
-	color: @fg;
-	padding: 0 8px;
-	border-radius: 8px;
+  color: @fg;
+  padding: 0 8px;
+  border-radius: 8px;
 }
 
 /* Sway's bar styled `active_workspace`: a workspace that is visible on
@@ -38,41 +39,38 @@ window#waybar {
    must come before `.active` — both classes apply to the focused workspace
    at once, and `.active` has to win. */
 #workspaces button.visible {
-	background: @active_bg;
+  background: @active_bg;
 }
 
 #workspaces button.active {
-	background: @highlight;
-	color: #ffffff;
+  background: @highlight;
+  color: #ffffff;
 }
 
 #workspaces button.urgent {
-	background: @urgent;
-	color: #ffffff;
+  background: @urgent;
+  color: #ffffff;
 }
 
 #window {
-	color: @fg;
-	padding: 0 8px;
+  color: @fg;
+  padding: 0 8px;
 }
 
-#mpris,
-#custom-mx_master,
-#custom-coderkeeb,
-#custom-wireguard,
+#bluetooth,
+#pulseaudio,
+#network,
 #cpu,
+#memory,
+#keyboard-state,
+#mpris,
 #language,
 #battery,
 #clock,
 #tray {
-	padding: 0 10px;
-	color: @fg;
-}
-
-#battery.warning {
-	color: #ff9000;
-}
-
-#battery.critical {
-	color: @urgent;
+  background: @module_bg;
+  border-radius: 6px;
+  margin: 0 2px 0 2px;
+  padding: 0 15px 0 15px;
+  color: @fg;
 }

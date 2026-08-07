@@ -1,104 +1,141 @@
-// Replaces Sway's `bar { status_command i3blocks }`. Nothing in the Hyprland
-// ecosystem consumes the i3bar JSON protocol that i3blocks emits, so the
-// blocks are re-expressed as Waybar modules — native wherever one exists.
+// -*- mode: jsonc -*-
 {
-	"layer": "top",
-	"position": "top",
-	"height": 34,
-	"spacing": 12,
-
-	"modules-left": ["hyprland/workspaces"],
-	"modules-center": ["hyprland/window"],
-	"modules-right": [
-		"mpris",
-		"custom/mx_master",
-		"custom/coderkeeb",
-		"custom/wireguard",
-		"cpu",
-		"hyprland/language",
-		"battery",
-		"clock",
-		"tray"
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	"height": 36, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+	"spacing": 14, // Gaps between modules (4px)
+	// Choose the order of the modules
+	"modules-center": [
+		"hyprland/submap",
+		"hyprland/workspaces"
 	],
-
-	// "on-click": "activate" was dropped here — verified against the installed
-	// binary's source that hyprland/workspaces hardcodes click-to-switch in
-	// Workspace::handleClicked (dispatches "workspace"/"focusworkspaceoncurrentmonitor"
-	// directly) and never reads an on-click config key. That key only exists on the
-	// generic ext/workspaces module (ext-workspace-v1 protocol), not this one; on
-	// hyprland/workspaces it would have been silently ignored. See task-6-report.md.
-	"hyprland/workspaces": {
-		"format": "{id}"
+	"modules-left": [
+		"mpris"
+	],
+	"modules-right": [
+		"bluetooth",
+		"pulseaudio",
+		"network",
+		"cpu",
+		"memory",
+		"hyprland/language",
+		"clock",
+		"custom/power"
+	],
+	"hyprland/submap": {
+		"format": "<span color='#e64553' background='#acaaee' ><span font='24'> \udb83\udc8e </span>RESIZE </span>",
+		"max-length": 30
 	},
-
-	"hyprland/window": {
-		"max-length": 80,
-		"separate-outputs": true
-	},
-
-	// Replaces spotify.sh, which shelled out to qdbus and grepped
-	// `pactl list sink-inputs` to infer play/pause state.
 	"mpris": {
-		"player": "spotify",
-		"format": "{status_icon} {title} - {artist}",
-		"status-icons": {
-			"playing": "",
-			"paused": ""
+		"format": "<span font='24' rise='-1000'>{player_icon}</span> {dynamic}",
+		"format-paused": "{status_icon} <i>{dynamic}</i>",
+		"dynamic-order": [
+			"artist",
+			"title"
+		],
+		"player-icons": {
+			"default": "▶",
+			"spotify": "",
+			"firefox": "",
+			"chromium": ""
 		},
-		"max-length": 60
+		"status-icons": {
+			"paused": "⏸"
+		},
+		"ignored-players": [
+			"vlc"
+		],
+		"max-length": 40
 	},
-
-	// Replaces the [cpu] block's `mpstat 1 1 | grep -A 5 | tail | awk`
-	// pipeline, which spawned four processes every second.
-	"cpu": {
-		"format": " {usage}%",
-		"interval": 1
-	},
-
-	// Replaces lang.sh, which parsed `swaymsg -t get_inputs` with jq and
-	// substring-matched a human-readable layout name.
 	"hyprland/language": {
-		"format": " {}",
+		"format": {},
 		"format-en": "US",
 		"format-sv": "SE"
 	},
-
-	// Replaces battery.sh, which read /sys/class/power_supply/BAT0/capacity —
-	// a path that does not exist on this desktop, so it had been failing
-	// silently every 10s. This module hides itself when there is no battery.
-	"battery": {
-		"format": " {capacity}%",
-		"format-charging": " {capacity}%",
-		"states": {
-			"warning": 25,
-			"critical": 10
-		}
+	"hyprland/mode": {
+		"format": "<span style=\"italic\">{}</span>"
 	},
-
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"format-icons": [
+			"",
+			""
+		],
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
 	"clock": {
-		"format": " {:%d %b %H:%M}",
-		"interval": 5,
-		"tooltip-format": "<tt>{calendar}</tt>"
+		// "timezone": "America/New_York",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
 	},
-
-	"tray": {
-		"spacing": 10
+	"cpu": {
+		"format": "<span font='24' rise='-1000'>{icon}</span>{usage}<span font='12' rise='2000'>%</span>",
+		"format-icons": [
+			"\udb83\udedf"
+		],
+		"tooltip": false
 	},
-
-	// No native equivalent — these three keep running the existing scripts
-	// from the i3blocks stow package, at their current 10s intervals.
-	"custom/mx_master": {
-		"exec": "$HOME/.config/i3blocks/mx_master.sh",
-		"interval": 10
+	"memory": {
+		// "format": "{percentage}% {icon}",
+		"format": "<span font='24' rise='-1000'>{icon}</span>{percentage}<span font='12' rise='2000'>%</span>",
+		"format-icons": [
+			"\uefc5"
+		]
 	},
-
-	"custom/coderkeeb": {
-		"exec": "$HOME/.config/i3blocks/coderkeeb.sh",
-		"interval": 10
+	"network": {
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "<span font='24' rise='-1000'>{icon}</span>{ipaddr}",
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"format-linked": "{ifname} (No IP) 󰊗",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"format-icons": [
+			"\uef09"
+		]
 	},
-
-	"custom/wireguard": {
-		"exec": "$HOME/.config/i3blocks/wireguard.sh",
-		"interval": 10
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "<span font='24' rise='-1000'>{icon}</span>{volume}<span font='12' rise='2000'>%</span> {format_source}",
+		"format-bluetooth": "<span font='24' rise='-1000'>{icon}</span>{volume}<span font='12' rise='2000'>%</span> {format_source}",
+		"format-bluetooth-muted": "󰅶 {icon}  {format_source}",
+		"format-muted": "󰅶 {format_source}",
+		"format-source": "<span font='24' rise='-1000'></span>{volume}<span font='12' rise='2000'>%</span>",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/power": {
+		"format": " ⏻ ",
+		"on-click": "wlogout",
+		"tooltip": false
+	},
+	"bluetooth": {
+		"format": "",
+		"format-device-preference": [
+			"CoderKeeb WHITE"
+		],
+		"format-connected": "{device_alias}",
+		"format-connected-battery": "<span font='24' rise='-1500'>\uf293</span> {device_alias} {device_battery_percentage}%",
+		"on-click": "overskride",
+		"format-icons": [
+			""
+		],
+		"tooltip-format": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias} {device_battery_percentage}%"
 	}
 }
