@@ -1,0 +1,46 @@
+#!/bin/sh
+# Chrome's ozone platform is chosen per session, not in chrome-flags.conf.
+# That file is read by /usr/bin/google-chrome-stable with
+# `grep -v '^#' "$XDG_CONFIG_HOME/chrome-flags.conf"` — flat text, no shell
+# evaluation — so it cannot express a conditional.
+#
+# The two failure modes are NOT symmetric, so the detection is written as
+# positive Hyprland detection with XWayland as the default:
+#
+#   - Guessing wrong about Sway is fatal. wayland 1.25.0 + wlroots0.20 0.20.2
+#     abort native-Wayland Chrome on wl_shm dispatch (see the 2026-07-26
+#     amendment in the sway spec) — Chrome simply dies.
+#   - Guessing wrong about Hyprland costs one XWayland indirection. Nothing
+#     crashes.
+#
+# So anything not positively identified as Hyprland gets --ozone-platform=x11.
+# This matters because the session variables are not always present: the
+# systemd user manager's environment (`systemctl --user show-environment`)
+# carries none of SWAYSOCK, WAYLAND_DISPLAY or XDG_CURRENT_DESKTOP, so a
+# Chrome started by a systemd user unit or by D-Bus/portal link activation
+# under Sway would fail a `[ -n "$SWAYSOCK" ]` test and crash. Failing that
+# test now only means XWayland.
+#
+# Hyprland: renders through aquamarine, not wlroots, so the implicated code
+# path is not in play and Chrome runs native Wayland with no flags at all.
+# This is deliberate — Chrome is the primary suspect in an open lag-spike
+# investigation (UPDATES.md) and must not carry an X11 workaround that
+# confounds it.
+#
+# Debian/i3 on X11: no HYPRLAND_INSTANCE_SIGNATURE, so this takes the x11
+# branch. That is explicit rather than relying on Chrome's ozone
+# auto-detection, and is correct there anyway.
+#
+# XDG_CURRENT_DESKTOP can hold a colon- or semicolon-separated list (this box
+# currently reports `sway;wlroots`), hence a substring match, case-insensitive.
+if [ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+	exec google-chrome-stable "$@"
+fi
+
+case "$(printf '%s' "${XDG_CURRENT_DESKTOP:-}" | tr '[:upper:]' '[:lower:]')" in
+*hyprland*)
+	exec google-chrome-stable "$@"
+	;;
+esac
+
+exec google-chrome-stable --ozone-platform=x11 "$@"

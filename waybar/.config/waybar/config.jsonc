@@ -1,0 +1,141 @@
+// -*- mode: jsonc -*-
+{
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	"height": 36, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+	"spacing": 14, // Gaps between modules (4px)
+	// Choose the order of the modules
+	"modules-center": [
+		"hyprland/submap",
+		"hyprland/workspaces"
+	],
+	"modules-left": [
+		"mpris"
+	],
+	"modules-right": [
+		"bluetooth",
+		"pulseaudio",
+		"network",
+		"cpu",
+		"memory",
+		"hyprland/language",
+		"clock",
+		"custom/power"
+	],
+	"hyprland/submap": {
+		"format": "<span color='#e64553' background='#acaaee' ><span font='24'> \udb83\udc8e </span>RESIZE </span>",
+		"max-length": 30
+	},
+	"mpris": {
+		"format": "<span font='24' rise='-1000'>{player_icon}</span> {dynamic}",
+		"format-paused": "{status_icon} <i>{dynamic}</i>",
+		"dynamic-order": [
+			"artist",
+			"title"
+		],
+		"player-icons": {
+			"default": "▶",
+			"spotify": "",
+			"firefox": "",
+			"chromium": ""
+		},
+		"status-icons": {
+			"paused": "⏸"
+		},
+		"ignored-players": [
+			"vlc"
+		],
+		"max-length": 40
+	},
+	"hyprland/language": {
+		"format": {},
+		"format-en": "US",
+		"format-sv": "SE"
+	},
+	"hyprland/mode": {
+		"format": "<span style=\"italic\">{}</span>"
+	},
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"format-icons": [
+			"",
+			""
+		],
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
+	"clock": {
+		// "timezone": "America/New_York",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"cpu": {
+		"format": "<span font='24' rise='-1000'>{icon}</span>{usage}<span font='12' rise='2000'>%</span>",
+		"format-icons": [
+			"\udb83\udedf"
+		],
+		"tooltip": false
+	},
+	"memory": {
+		// "format": "{percentage}% {icon}",
+		"format": "<span font='24' rise='-1000'>{icon}</span>{percentage}<span font='12' rise='2000'>%</span>",
+		"format-icons": [
+			"\uefc5"
+		]
+	},
+	"network": {
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "<span font='24' rise='-1000'>{icon}</span>{ipaddr}",
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"format-linked": "{ifname} (No IP) 󰊗",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"format-icons": [
+			"\uef09"
+		]
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "<span font='24' rise='-1000'>{icon}</span>{volume}<span font='12' rise='2000'>%</span> {format_source}",
+		"format-bluetooth": "<span font='24' rise='-1000'>{icon}</span>{volume}<span font='12' rise='2000'>%</span> {format_source}",
+		"format-bluetooth-muted": "󰅶 {icon}  {format_source}",
+		"format-muted": "󰅶 {format_source}",
+		"format-source": "<span font='24' rise='-1000'></span>{volume}<span font='12' rise='2000'>%</span>",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/power": {
+		"format": " ⏻ ",
+		"on-click": "wlogout",
+		"tooltip": false
+	},
+	"bluetooth": {
+		"format": "",
+		"format-device-preference": [
+			"CoderKeeb WHITE"
+		],
+		"format-connected": "{device_alias}",
+		"format-connected-battery": "<span font='24' rise='-1500'>\uf293</span> {device_alias} {device_battery_percentage}%",
+		"on-click": "overskride",
+		"format-icons": [
+			""
+		],
+		"tooltip-format": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias} {device_battery_percentage}%"
+	}
+}

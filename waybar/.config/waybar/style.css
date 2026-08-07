@@ -1,0 +1,76 @@
+/* Catppuccin Frappe, matching the palette in the Sway config. */
+@define-color bg          rgba(35, 38, 52, 0.75);
+@define-color fg          #babbf1;
+@define-color highlight   #8caaee;
+@define-color urgent      #e78284;
+@define-color active_bg   #51576d;
+@define-color module_bg	  #414559;
+
+* {
+  font-family: "Hack Nerd Font", monospace;
+  font-size: 24px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @fg;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background: @bg;
+  border-radius: 8px;
+  margin: 6px 8px;
+  padding: 0 20px;
+}
+
+#workspaces button {
+  color: @fg;
+  padding: 0 8px;
+  border-radius: 8px;
+}
+
+/* Sway's bar styled `active_workspace`: a workspace that is visible on
+   another output but not focused. Waybar's equivalent is `.visible`. This
+   must come before `.active` — both classes apply to the focused workspace
+   at once, and `.active` has to win. */
+#workspaces button.visible {
+  background: @active_bg;
+}
+
+#workspaces button.active {
+  background: @highlight;
+  color: #ffffff;
+}
+
+#workspaces button.urgent {
+  background: @urgent;
+  color: #ffffff;
+}
+
+#window {
+  color: @fg;
+  padding: 0 8px;
+}
+
+#bluetooth,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#keyboard-state,
+#mpris,
+#language,
+#battery,
+#clock,
+#tray {
+  background: @module_bg;
+  border-radius: 6px;
+  margin: 0 2px 0 2px;
+  padding: 0 15px 0 15px;
+  color: @fg;
+}
