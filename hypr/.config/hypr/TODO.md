@@ -18,7 +18,6 @@ and window behavior that are in my muscle memory. Therefore we should use hy3 an
 sudo usermod -aG input $USER
 ```
 
-- Add tux.png to git
-- Add blueman/overskride to env-instal.sh
+- Add blueman/overskride to env-install.sh
 - Add wlogout to env-install.sh
 - Make sure to stow hypr, wlogout, waybar
