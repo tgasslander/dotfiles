@@ -60,6 +60,10 @@ hl.define_submap("resize", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
+-- V or H split group
+hl.bind(mainMod .. " + SHIFT + V ", hl.dsp.exec_cmd("hyperctl dispatch hy3:makegroup h"))
+hl.bind(mainMod .. " + V ", hl.dsp.exec_cmd("hyperctl dispatch hy3:makegroup v"))
+
 --------------------------
 -- Workspace management --
 --------------------------
