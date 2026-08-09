@@ -28,6 +28,8 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 --- Logout/shutdown
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(logout))
+--- Toggle keyboard layout (us/se); both layouts are declared in hyprland.lua's input block
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("hyprctl switchxkblayout all next"))
 
 --------------------------
 ---- Window handling -----
