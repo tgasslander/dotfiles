@@ -62,7 +62,7 @@ hl.on("hyprland.start", function()
 	-- below in lookandfeel.lua).
 	hl.exec_cmd("hyprctl plugin load /usr/lib/libhy3.so && hyprctl reload")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("waybar & hyprpaper")
+	hl.exec_cmd("~/.config/hypr/scripts/waybar-respawn.sh & hyprpaper")
 end)
 
 -------------------------------
