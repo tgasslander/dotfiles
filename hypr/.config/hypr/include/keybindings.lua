@@ -30,6 +30,8 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(logout))
 --- Toggle keyboard layout (us/se); both layouts are declared in hyprland.lua's input block
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("hyprctl switchxkblayout all next"))
+--- Screenshot: drag-select a region, copies to clipboard (also saves to disk)
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region"))
 
 --------------------------
 ---- Window handling -----
