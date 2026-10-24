@@ -9,3 +9,8 @@
 # package; install uv via env-install instead of committing them.
 scripts/.local/bin/uv
 scripts/.local/bin/uvx
+
+# oh-my-posh (omp, ~175MB) and rtk are prebuilt binaries; install them via
+# env-install instead of committing them (same policy as uv/uvx above).
+scripts/.local/bin/omp
+scripts/.local/bin/rtk
