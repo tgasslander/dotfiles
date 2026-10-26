@@ -27,6 +27,9 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
+-- Include 'localoptions' so filetype/highlighting survive an auto-session restore
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
